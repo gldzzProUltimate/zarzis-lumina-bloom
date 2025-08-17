@@ -12,23 +12,23 @@ export const GalleryPreview = () => {
   // Gallery images - using placeholder images for now
   const galleryImages = [
     {
-      src: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop&auto=format',
+      src: 'image-1.jpeg',
       alt: 'Mediterranean sponge diving',
     },
     {
-      src: 'https://images.unsplash.com/photo-1564135530894-30e9ac0a843c?w=800&h=600&fit=crop&auto=format',
+      src: 'image-2.jpeg',
       alt: 'Natural sea sponges drying',
     },
     {
-      src: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&auto=format',
+      src: 'image-3.jpeg',
       alt: 'Luxury spa with natural sponges',
     },
     {
-      src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&auto=format',
+      src: 'image-4.jpeg',
       alt: 'Artisan sponge preparation',
     },
     {
-      src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop&auto=format',
+      src: 'image-5.jpeg',
       alt: 'Coastal harvesting scene',
     },
   ];

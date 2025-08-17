@@ -13,22 +13,22 @@ export const ProductsPreview = () => {
     {
       title: 'Premium Bath Sponges',
       description: 'Luxurious natural sponges for daily use',
-      image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop&auto=format',
+      image: 'image-1.jpeg',
     },
     {
       title: 'Spa Collection',
       description: 'Professional-grade sponges for wellness centers',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&auto=format',
+      image: 'image-2.jpeg',
     },
     {
       title: 'Gentle Baby Sponges',
       description: 'Extra soft sponges for sensitive skin',
-      image: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=400&h=300&fit=crop&auto=format',
+      image: 'image-3.jpeg',
     },
     {
       title: 'Artisan Collection',
       description: 'Handcrafted premium selections',
-      image: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&h=300&fit=crop&auto=format',
+      image: 'image-4.jpeg',
     },
   ];
 
