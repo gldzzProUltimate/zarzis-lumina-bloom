@@ -2,73 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Zarzis Éponge Design System - Mediterranean coastal luxury
-Primary: Golden sand #c4a866, Ocean blue #4a90a4, Glassmorphism & gradients
-All colors MUST be HSL.
+/* Zarzis Éponge Enhanced Design System - Luxury Mediterranean Aesthetics
+Premium Typography: Playfair Display, Inter, Crimson Text
+Colors: Golden sand #c4a866, Deep ocean #4a90a4, Pearl white, Rich gradients
 */
 
 @layer base {
   :root {
-    /* Base colors - soft coastal palette */
+    /* Enhanced color palette - sophisticated coastal luxury */
     --background: 0 0% 100%;
-    --foreground: 25 25% 15%;
+    --foreground: 25 30% 12%;
 
-    /* Card system with glassmorphism */
+    /* Premium card system with enhanced glassmorphism */
     --card: 0 0% 100%;
-    --card-foreground: 25 25% 15%;
-    --glass: 0 0% 100% / 0.7;
-    --glass-foreground: 25 25% 15%;
+    --card-foreground: 25 30% 12%;
+    --glass: 0 0% 100% / 0.75;
+    --glass-foreground: 25 30% 12%;
+    --glass-border: 42 30% 85% / 0.3;
 
-    /* Popover system */
+    /* Sophisticated popover system */
     --popover: 0 0% 100%;
-    --popover-foreground: 25 25% 15%;
+    --popover-foreground: 25 30% 12%;
 
-    /* Primary - Golden sand #c4a866 */
-    --primary: 42 50% 60%;
+    /* Primary - Enhanced golden sand palette */
+    --primary: 42 55% 58%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 42 60% 70%;
-    --primary-subtle: 42 30% 95%;
+    --primary-glow: 42 65% 68%;
+    --primary-subtle: 42 35% 96%;
+    --primary-deep: 42 45% 45%;
 
-    /* Secondary - Ocean blue #4a90a4 */
-    --secondary: 196 38% 46%;
+    /* Secondary - Enhanced ocean blue palette */
+    --secondary: 196 42% 44%;
     --secondary-foreground: 0 0% 100%;
-    --secondary-glow: 196 45% 60%;
-    --secondary-subtle: 196 20% 95%;
+    --secondary-glow: 196 48% 58%;
+    --secondary-subtle: 196 25% 96%;
+    --secondary-deep: 196 35% 32%;
 
-    /* Muted tones */
-    --muted: 25 10% 95%;
-    --muted-foreground: 25 15% 45%;
+    /* Tertiary - Pearl and cream tones */
+    --tertiary: 35 20% 92%;
+    --tertiary-foreground: 25 30% 15%;
+    --pearl: 30 15% 95%;
+    --cream: 38 25% 88%;
 
-    /* Accent - Warm cream */
-    --accent: 35 25% 92%;
-    --accent-foreground: 25 25% 15%;
+    /* Enhanced muted tones */
+    --muted: 25 12% 94%;
+    --muted-foreground: 25 18% 42%;
 
-    /* Destructive */
-    --destructive: 0 84% 60%;
+    /* Luxury accent colors */
+    --accent: 35 28% 90%;
+    --accent-foreground: 25 30% 12%;
+    --accent-gold: 45 60% 75%;
+    --accent-bronze: 25 35% 65%;
+
+    /* Enhanced destructive */
+    --destructive: 0 85% 62%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders and inputs with subtle warmth */
-    --border: 25 15% 88%;
-    --input: 25 15% 90%;
-    --ring: 42 50% 60%;
+    /* Refined borders and inputs */
+    --border: 25 18% 86%;
+    --input: 25 18% 88%;
+    --ring: 42 55% 58%;
 
-    /* Enhanced radius for modern feel */
-    --radius: 1rem;
+    /* Premium radius system */
+    --radius: 1.25rem;
 
-    /* Custom gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
-    --gradient-ocean: linear-gradient(180deg, hsl(var(--secondary-glow)) 0%, hsl(var(--secondary)) 100%);
-    --gradient-sand: linear-gradient(45deg, hsl(var(--primary-subtle)) 0%, hsl(var(--primary-glow)) 100%);
+    /* Sophisticated gradient collection */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 60%, hsl(var(--primary-glow)) 100%);
+    --gradient-ocean: linear-gradient(180deg, hsl(var(--secondary-glow)) 0%, hsl(var(--secondary)) 50%, hsl(var(--secondary-deep)) 100%);
+    --gradient-sand: linear-gradient(45deg, hsl(var(--primary-subtle)) 0%, hsl(var(--cream)) 50%, hsl(var(--primary-glow)) 100%);
+    --gradient-pearl: linear-gradient(135deg, hsl(var(--pearl)) 0%, hsl(var(--tertiary)) 100%);
+    --gradient-luxury: linear-gradient(135deg, hsl(var(--accent-gold)) 0%, hsl(var(--primary)) 50%, hsl(var(--accent-bronze)) 100%);
     --gradient-glass: linear-gradient(135deg, hsl(var(--glass)) 0%, hsl(0 0% 100% / 0.4) 100%);
 
-    /* Shadows with colored glow */
-    --shadow-glow: 0 10px 40px -10px hsl(var(--primary) / 0.3);
-    --shadow-ocean: 0 20px 60px -15px hsl(var(--secondary) / 0.4);
-    --shadow-soft: 0 4px 20px -2px hsl(25 15% 45% / 0.1);
+    /* Premium shadow system */
+    --shadow-soft: 0 2px 20px -4px hsl(25 15% 45% / 0.08);
+    --shadow-medium: 0 8px 30px -8px hsl(25 15% 45% / 0.12);
+    --shadow-large: 0 16px 60px -12px hsl(25 15% 45% / 0.16);
+    --shadow-glow: 0 12px 45px -8px hsl(var(--primary) / 0.35);
+    --shadow-ocean: 0 20px 65px -15px hsl(var(--secondary) / 0.4);
+    --shadow-luxury: 0 25px 80px -20px hsl(var(--accent-gold) / 0.3);
 
-    /* Animation variables */
+    /* Enhanced animation variables */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-luxury: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
     /* Sidebar variables */
     --sidebar-background: 0 0% 98%;
@@ -82,42 +99,68 @@ All colors MUST be HSL.
   }
 
   .dark {
-    /* Dark mode - deeper oceanic tones */
-    --background: 220 25% 8%;
-    --foreground: 35 20% 90%;
+    /* Enhanced dark mode - sophisticated oceanic depths */
+    --background: 220 28% 6%;
+    --foreground: 35 25% 92%;
 
-    --card: 220 25% 10%;
-    --card-foreground: 35 20% 90%;
-    --glass: 220 25% 15% / 0.8;
-    --glass-foreground: 35 20% 90%;
+    --card: 220 28% 8%;
+    --card-foreground: 35 25% 92%;
+    --glass: 220 25% 12% / 0.8;
+    --glass-foreground: 35 25% 92%;
+    --glass-border: 196 20% 30% / 0.3;
 
-    --popover: 220 25% 10%;
-    --popover-foreground: 35 20% 90%;
+    --popover: 220 28% 8%;
+    --popover-foreground: 35 25% 92%;
 
-    /* Primary - Brighter golden sand for dark mode */
-    --primary: 42 60% 65%;
-    --primary-foreground: 220 25% 8%;
-    --primary-glow: 42 70% 75%;
-    --primary-subtle: 42 25% 15%;
+    /* Enhanced primary for dark mode */
+    --primary: 42 65% 68%;
+    --primary-foreground: 220 28% 6%;
+    --primary-glow: 42 75% 78%;
+    --primary-subtle: 42 30% 12%;
+    --primary-deep: 42 55% 55%;
 
-    /* Secondary - Lighter ocean blue */
-    --secondary: 196 45% 55%;
-    --secondary-foreground: 220 25% 8%;
-    --secondary-glow: 196 55% 65%;
-    --secondary-subtle: 196 25% 15%;
+    /* Enhanced secondary for dark mode */
+    --secondary: 196 48% 58%;
+    --secondary-foreground: 220 28% 6%;
+    --secondary-glow: 196 58% 68%;
+    --secondary-subtle: 196 30% 12%;
+    --secondary-deep: 196 38% 45%;
 
-    --muted: 220 20% 15%;
-    --muted-foreground: 35 15% 60%;
+    /* Dark mode tertiary colors */
+    --tertiary: 220 25% 15%;
+    --tertiary-foreground: 35 25% 92%;
+    --pearl: 220 20% 18%;
+    --cream: 220 22% 20%;
 
-    --accent: 220 20% 18%;
-    --accent-foreground: 35 20% 90%;
+    --muted: 220 25% 12%;
+    --muted-foreground: 35 18% 65%;
 
-    --destructive: 0 75% 55%;
+    --accent: 220 25% 15%;
+    --accent-foreground: 35 25% 92%;
+    --accent-gold: 45 70% 65%;
+    --accent-bronze: 25 40% 55%;
+
+    --destructive: 0 78% 58%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 20%;
-    --input: 220 20% 18%;
-    --ring: 42 60% 65%;
+    --border: 220 25% 18%;
+    --input: 220 25% 16%;
+    --ring: 42 65% 68%;
+
+    /* Enhanced dark gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 60%, hsl(var(--primary-glow)) 100%);
+    --gradient-ocean: linear-gradient(180deg, hsl(var(--secondary-glow)) 0%, hsl(var(--secondary)) 50%, hsl(var(--secondary-deep)) 100%);
+    --gradient-sand: linear-gradient(45deg, hsl(var(--primary-subtle)) 0%, hsl(var(--cream)) 50%, hsl(var(--primary)) 100%);
+    --gradient-pearl: linear-gradient(135deg, hsl(var(--pearl)) 0%, hsl(var(--tertiary)) 100%);
+    --gradient-luxury: linear-gradient(135deg, hsl(var(--accent-gold)) 0%, hsl(var(--primary)) 50%, hsl(var(--accent-bronze)) 100%);
+
+    /* Enhanced dark shadows */
+    --shadow-soft: 0 2px 20px -4px hsl(0 0% 0% / 0.2);
+    --shadow-medium: 0 8px 30px -8px hsl(0 0% 0% / 0.3);
+    --shadow-large: 0 16px 60px -12px hsl(0 0% 0% / 0.4);
+    --shadow-glow: 0 12px 45px -8px hsl(var(--primary) / 0.4);
+    --shadow-ocean: 0 20px 65px -15px hsl(var(--secondary) / 0.5);
+    --shadow-luxury: 0 25px 80px -20px hsl(var(--accent-gold) / 0.4);
 
     /* Sidebar dark mode */
     --sidebar-background: 240 5.9% 10%;
@@ -135,25 +178,59 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground scroll-smooth;
+    @apply bg-background text-foreground scroll-smooth font-inter;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-optical-sizing: auto;
   }
 
   html {
     scroll-behavior: smooth;
   }
+
+  /* Enhanced typography hierarchy */
+  h1, h2, h3 {
+    @apply font-playfair;
+    font-optical-sizing: auto;
+  }
+
+  h4, h5, h6 {
+    @apply font-crimson;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
 }
 
-/* Glassmorphism utilities */
+/* Enhanced glassmorphism and luxury utilities */
 @layer utilities {
   .glass {
-    @apply bg-gradient-to-br from-white/70 to-white/30 backdrop-blur-lg border border-white/20;
+    @apply bg-gradient-to-br from-white/80 to-white/40 backdrop-blur-xl border border-white/30;
+    box-shadow: 
+      0 8px 32px 0 rgba(31, 38, 135, 0.37),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
   }
   
   .glass-dark {
-    @apply bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg border border-white/10;
+    @apply bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl border border-white/20;
+    box-shadow: 
+      0 8px 32px 0 rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
   }
 
+  .glass-luxury {
+    background: linear-gradient(135deg, 
+      hsl(var(--glass)) 0%, 
+      hsl(var(--pearl)) 50%, 
+      hsl(var(--glass)) 100%);
+    @apply backdrop-blur-2xl border;
+    border-color: hsl(var(--glass-border));
+    box-shadow: 
+      0 12px 40px -8px hsl(var(--primary) / 0.15),
+      inset 0 1px 0 0 hsl(var(--primary-glow) / 0.3);
+  }
+
+  /* Premium gradient utilities */
   .hero-gradient {
     background: var(--gradient-hero);
   }
@@ -166,6 +243,27 @@ All colors MUST be HSL.
     background: var(--gradient-sand);
   }
 
+  .pearl-gradient {
+    background: var(--gradient-pearl);
+  }
+
+  .luxury-gradient {
+    background: var(--gradient-luxury);
+  }
+
+  /* Enhanced shadow utilities */
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+
+  .shadow-large {
+    box-shadow: var(--shadow-large);
+  }
+
   .shadow-glow {
     box-shadow: var(--shadow-glow);
   }
@@ -174,15 +272,73 @@ All colors MUST be HSL.
     box-shadow: var(--shadow-ocean);
   }
 
-  .shadow-soft {
-    box-shadow: var(--shadow-soft);
+  .shadow-luxury {
+    box-shadow: var(--shadow-luxury);
   }
 
+  /* Premium transition utilities */
   .transition-smooth {
     transition: var(--transition-smooth);
   }
 
   .transition-bounce {
     transition: var(--transition-bounce);
+  }
+
+  .transition-luxury {
+    transition: var(--transition-luxury);
+  }
+
+  /* Enhanced text effects */
+  .text-shimmer {
+    background: linear-gradient(
+      45deg,
+      hsl(var(--primary)) 25%,
+      hsl(var(--primary-glow)) 50%,
+      hsl(var(--primary)) 75%
+    );
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Luxury button effects */
+  .btn-luxury {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-luxury::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--primary-glow) / 0.4),
+      transparent
+    );
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-luxury:hover::before {
+    left: 100%;
+  }
+
+  /* Premium focus states */
+  .focus-luxury {
+    @apply focus:outline-none focus:ring-4;
+    ring-color: hsl(var(--primary) / 0.3);
+    ring-offset-color: hsl(var(--background));
   }
 }

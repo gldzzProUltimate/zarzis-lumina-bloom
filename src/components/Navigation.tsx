@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { LanguageSwitcher } from './LanguageSwitcher';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Waves } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const Navigation = () => {
@@ -24,7 +24,7 @@ export const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 30);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -35,41 +35,58 @@ export const Navigation = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-luxury ${
         isScrolled
-          ? 'glass border-b border-primary/20 shadow-soft'
+          ? 'glass-luxury border-b border-primary/10 shadow-large backdrop-blur-2xl'
           : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Enhanced Logo */}
+          <Link to="/" className="flex items-center space-x-3 group">
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="text-2xl font-bold hero-gradient bg-clip-text text-transparent"
+              whileHover={{ scale: 1.05, rotate: 5 }}
+              className="w-10 h-10 luxury-gradient rounded-xl flex items-center justify-center shadow-medium group-hover:shadow-glow transition-luxury"
             >
-              Zarzis Éponge
+              <Waves className="h-6 w-6 text-white" />
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="flex flex-col"
+            >
+              <span className="text-2xl lg:text-3xl font-bold text-shimmer">
+                Zarzis Éponge
+              </span>
+              <span className="text-xs text-muted-foreground font-inter tracking-wider">
+                PREMIUM MEDITERRANEAN
+              </span>
             </motion.div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-1">
             {navItems.map((item) => (
               <Link
                 key={item.key}
                 to={item.path}
-                className={`relative text-sm font-medium transition-smooth hover:text-primary ${
+                className={`relative px-4 py-2 text-sm font-medium transition-luxury hover:text-primary group ${
                   location.pathname === item.path
                     ? 'text-primary'
                     : 'text-foreground/80'
                 }`}
               >
-                {t(`nav.${item.key}`)}
+                <span className="relative z-10">{t(`nav.${item.key}`)}</span>
+                
+                {/* Enhanced hover effect */}
+                <div className="absolute inset-0 rounded-xl bg-primary/10 scale-0 group-hover:scale-100 transition-luxury opacity-0 group-hover:opacity-100" />
+                
+                {/* Active indicator */}
                 {location.pathname === item.path && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute -bottom-2 left-0 right-0 h-0.5 bg-primary rounded-full"
+                    className="absolute -bottom-1 left-0 right-0 h-1 luxury-gradient rounded-full shadow-glow"
                   />
                 )}
               </Link>
@@ -80,30 +97,80 @@ export const Navigation = () => {
           <div className="flex items-center space-x-4">
             <LanguageSwitcher />
             
+            {/* CTA Button for desktop */}
+            <div className="hidden md:block">
+              <Button 
+                variant="outline"
+                size="sm"
+                className="glass-luxury border-primary/20 text-primary hover:bg-primary hover:text-primary-foreground transition-luxury font-semibold px-6 rounded-xl shadow-soft hover:shadow-glow"
+              >
+                Get Quote
+              </Button>
+            </div>
+            
             {/* Mobile Menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild className="md:hidden">
-                <Button variant="ghost" size="sm" className="h-9 w-9 px-0">
-                  <Menu className="h-4 w-4" />
+              <SheetTrigger asChild className="lg:hidden">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="h-11 w-11 px-0 glass-luxury hover:bg-primary/10 transition-luxury rounded-xl"
+                >
+                  <Menu className="h-5 w-5" />
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="glass border-primary/20">
-                <div className="flex flex-col space-y-6 mt-6">
-                  {navItems.map((item) => (
-                    <Link
+              <SheetContent 
+                side="right" 
+                className="glass-luxury border-primary/10 backdrop-blur-2xl w-80"
+              >
+                <div className="flex flex-col space-y-8 mt-12">
+                  {/* Mobile logo */}
+                  <div className="flex items-center space-x-3 mb-8">
+                    <div className="w-8 h-8 luxury-gradient rounded-lg flex items-center justify-center">
+                      <Waves className="h-5 w-5 text-white" />
+                    </div>
+                    <div>
+                      <span className="text-xl font-bold text-shimmer">Zarzis Éponge</span>
+                    </div>
+                  </div>
+
+                  {/* Mobile navigation */}
+                  {navItems.map((item, index) => (
+                    <motion.div
                       key={item.key}
-                      to={item.path}
-                      onClick={() => setIsOpen(false)}
-                      className={`text-lg font-medium transition-smooth hover:text-primary ${
-                        location.pathname === item.path
-                          ? 'text-primary'
-                          : 'text-foreground/80'
-                      }`}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
                     >
-                      {t(`nav.${item.key}`)}
-                    </Link>
+                      <Link
+                        to={item.path}
+                        onClick={() => setIsOpen(false)}
+                        className={`block text-lg font-medium transition-luxury hover:text-primary p-3 rounded-xl hover:bg-primary/5 ${
+                          location.pathname === item.path
+                            ? 'text-primary bg-primary/10'
+                            : 'text-foreground/80'
+                        }`}
+                      >
+                        {t(`nav.${item.key}`)}
+                      </Link>
+                    </motion.div>
                   ))}
+
+                  {/* Mobile CTA */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 }}
+                    className="pt-8 border-t border-primary/10"
+                  >
+                    <Button 
+                      className="w-full luxury-gradient text-white shadow-luxury hover:shadow-glow transition-luxury font-semibold py-3 rounded-xl"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Get Your Premium Sponges
+                    </Button>
+                  </motion.div>
                 </div>
               </SheetContent>
             </Sheet>

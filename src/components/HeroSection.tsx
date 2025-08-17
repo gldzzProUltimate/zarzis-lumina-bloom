@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Import hero images
@@ -13,15 +13,18 @@ import heroSpa from '@/assets/hero-spa.jpg';
 const heroImages = [
   {
     src: heroSponges,
-    alt: 'Premium Natural Sea Sponges'
+    alt: 'Premium Natural Sea Sponges',
+    overlay: 'luxury-gradient'
   },
   {
     src: heroDiving,
-    alt: 'Mediterranean Sponge Diving'
+    alt: 'Mediterranean Sponge Diving',
+    overlay: 'ocean-gradient'
   },
   {
     src: heroSpa,
-    alt: 'Luxury Spa Experience'
+    alt: 'Luxury Spa Experience',
+    overlay: 'pearl-gradient'
   }
 ];
 
@@ -36,7 +39,7 @@ export const HeroSection = () => {
 
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [isAutoPlaying]);
@@ -60,10 +63,10 @@ export const HeroSection = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0, scale: 1.1 }}
+            initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 1.2 }}
             className="absolute inset-0"
           >
             <img
@@ -71,69 +74,117 @@ export const HeroSection = () => {
               alt={heroImages[currentSlide].alt}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-background/30 to-transparent" />
+            {/* Enhanced overlay with dynamic gradients */}
+            <div className={`absolute inset-0 ${heroImages[currentSlide].overlay} opacity-60`} />
+            <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-background/30 to-transparent" />
+            
+            {/* Floating particles effect */}
+            <div className="absolute inset-0 overflow-hidden">
+              {[...Array(12)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-2 h-2 bg-primary/20 rounded-full"
+                  initial={{ 
+                    x: Math.random() * window.innerWidth,
+                    y: window.innerHeight + 50,
+                    opacity: 0
+                  }}
+                  animate={{ 
+                    y: -50,
+                    opacity: [0, 1, 0]
+                  }}
+                  transition={{
+                    duration: Math.random() * 3 + 4,
+                    repeat: Infinity,
+                    delay: Math.random() * 2,
+                    ease: "linear"
+                  }}
+                />
+              ))}
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
-        <div className="max-w-2xl">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+        <div className="max-w-4xl">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.9, delay: 0.3 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              <span className="hero-gradient bg-clip-text text-transparent">
+            {/* Premium badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="inline-flex items-center gap-2 glass-luxury rounded-full px-6 py-3 mb-8 shadow-luxury"
+            >
+              <Sparkles className="h-4 w-4 text-primary" />
+              <span className="text-sm font-medium text-primary">Premium Mediterranean Quality</span>
+            </motion.div>
+
+            <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold mb-8 leading-tight text-balance">
+              <span className="text-shimmer">
                 {t('hero.title')}
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-secondary mb-4 font-medium">
+            <p className="text-xl sm:text-2xl lg:text-3xl text-secondary-deep mb-6 font-crimson font-medium">
               {t('hero.subtitle')}
             </p>
             
-            <p className="text-lg text-foreground/80 mb-8 leading-relaxed max-w-xl">
+            <p className="text-lg sm:text-xl text-foreground/80 mb-12 leading-relaxed max-w-2xl font-inter">
               {t('hero.description')}
             </p>
 
-            <Link to="/about">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link to="/about">
+                <Button 
+                  size="lg" 
+                  className="btn-luxury luxury-gradient text-white shadow-luxury hover:shadow-ocean transition-luxury group px-10 py-7 text-lg font-semibold rounded-2xl focus-luxury"
+                  onMouseEnter={() => setIsAutoPlaying(false)}
+                  onMouseLeave={() => setIsAutoPlaying(true)}
+                >
+                  {t('hero.cta')}
+                  <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-2" />
+                </Button>
+              </Link>
+              
               <Button 
-                size="lg" 
-                className="hero-gradient text-white shadow-glow hover:shadow-ocean transition-smooth group px-8 py-6 text-lg"
-                onMouseEnter={() => setIsAutoPlaying(false)}
-                onMouseLeave={() => setIsAutoPlaying(true)}
+                variant="outline" 
+                size="lg"
+                className="glass-luxury border-2 border-primary/20 text-primary hover:bg-primary/10 transition-luxury px-10 py-7 text-lg font-semibold rounded-2xl focus-luxury"
               >
-                {t('hero.cta')}
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                View Collection
               </Button>
-            </Link>
+            </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Carousel Controls */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="flex items-center space-x-4">
+      {/* Enhanced Carousel Controls */}
+      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20">
+        <div className="flex items-center space-x-6">
           <Button
             variant="ghost"
             size="sm"
             onClick={prevSlide}
-            className="glass h-10 w-10 p-0 hover:bg-primary/20"
+            className="glass-luxury h-14 w-14 p-0 hover:bg-primary/20 transition-luxury rounded-full shadow-medium"
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-6 w-6" />
           </Button>
 
-          <div className="flex space-x-2">
+          <div className="flex space-x-3">
             {heroImages.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-smooth ${
+                className={`w-4 h-4 rounded-full transition-luxury ${
                   index === currentSlide
-                    ? 'bg-primary shadow-glow'
-                    : 'bg-white/40 hover:bg-white/60'
+                    ? 'luxury-gradient shadow-glow scale-125'
+                    : 'bg-white/40 hover:bg-white/60 shadow-soft'
                 }`}
               />
             ))}
@@ -143,25 +194,29 @@ export const HeroSection = () => {
             variant="ghost"
             size="sm"
             onClick={nextSlide}
-            className="glass h-10 w-10 p-0 hover:bg-primary/20"
+            className="glass-luxury h-14 w-14 p-0 hover:bg-primary/20 transition-luxury rounded-full shadow-medium"
           >
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-6 w-6" />
           </Button>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Enhanced Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 right-8 z-20"
+        transition={{ delay: 2 }}
+        className="absolute bottom-12 right-12 z-20"
       >
-        <div className="flex flex-col items-center text-white/80 animate-float">
-          <span className="text-sm mb-2 rotate-90 origin-center">Scroll</span>
-          <div className="w-px h-8 bg-gradient-to-b from-primary to-transparent" />
+        <div className="flex flex-col items-center text-white/90 animate-float">
+          <span className="text-sm mb-4 rotate-90 origin-center font-inter tracking-wider">Discover</span>
+          <div className="w-px h-12 luxury-gradient rounded-full shadow-glow" />
         </div>
       </motion.div>
+
+      {/* Decorative elements */}
+      <div className="absolute top-1/4 right-1/4 w-64 h-64 luxury-gradient rounded-full blur-3xl opacity-20 animate-pulse" />
+      <div className="absolute bottom-1/4 left-1/4 w-48 h-48 ocean-gradient rounded-full blur-2xl opacity-30 animate-pulse" style={{ animationDelay: '1s' }} />
     </section>
   );
 };
