@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Our Services",
+    "products": "Products",
+    "gallery": "Gallery",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Premium Natural Sea Sponges",
+    "subtitle": "Handcrafted from the Mediterranean Coast of Tunisia",
+    "description": "Discover the luxury of Zarzis Éponge - where 40+ years of tradition meets sustainable harvesting to bring you the finest natural sea sponges.",
+    "cta": "Discover Our Story"
+  },
+  "values": {
+    "title": "Why Choose Zarzis Éponge",
+    "heritage": {
+      "title": "40+ Years Heritage",
+      "description": "Four decades of expertise in Mediterranean sponge harvesting"
+    },
+    "direct": {
+      "title": "Producer to Consumer",
+      "description": "Direct from our waters to your home, ensuring authenticity"
+    },
+    "certified": {
+      "title": "Certified Quality",
+      "description": "Meeting international standards for natural bath products"
+    },
+    "eco": {
+      "title": "Eco-Friendly Harvesting",
+      "description": "Sustainable practices preserving marine ecosystems"
+    }
+  },
+  "about": {
+    "title": "Crafted by Nature, Perfected by Time",
+    "description": "From the pristine waters of Zarzis, Tunisia, we bring you sponges that have been naturally formed over years in the Mediterranean Sea. Our family tradition spans generations, combining ancient harvesting techniques with modern quality standards.",
+    "cta": "Learn Our Story"
+  },
+  "services": {
+    "title": "Our Process",
+    "subtitle": "From Sea to Your Home",
+    "step1": {
+      "title": "Sustainable Harvesting",
+      "description": "Careful collection from Mediterranean waters"
+    },
+    "step2": {
+      "title": "Natural Processing",
+      "description": "Traditional cleaning and preparation methods"
+    },
+    "step3": {
+      "title": "Quality Control",
+      "description": "Rigorous testing for softness and durability"
+    },
+    "step4": {
+      "title": "Premium Packaging",
+      "description": "Eco-friendly packaging for worldwide delivery"
+    },
+    "cta": "View Our Services"
+  },
+  "products": {
+    "title": "Premium Sponge Collection",
+    "description": "Explore our range of natural sea sponges, each carefully selected for its unique properties and exceptional quality.",
+    "cta": "Shop Now"
+  },
+  "gallery": {
+    "title": "From Our Waters to Your World",
+    "description": "Witness the journey of our natural sponges from the Mediterranean depths to luxury bathrooms worldwide.",
+    "cta": "View Gallery"
+  },
+  "contact": {
+    "title": "Connect with Zarzis Éponge",
+    "description": "Ready to experience the finest natural sea sponges? Contact us for wholesale, retail, or custom orders.",
+    "cta": "Get In Touch",
+    "address": "Zarzis, Tunisia",
+    "phone": "+216 XX XXX XXX",
+    "email": "contact@zarziseponge.com"
+  },
+  "footer": {
+    "copyright": "© 2024 Zarzis Éponge. All rights reserved.",
+    "made_with": "Made with care in Tunisia"
+  },
+  "social": {
+    "facebook": "Follow us on Facebook",
+    "whatsapp": "WhatsApp us",
+    "email": "Send us an email"
+  }
+}
