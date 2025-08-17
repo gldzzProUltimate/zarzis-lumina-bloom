@@ -33,7 +33,6 @@ export const Navigation = () => {
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-luxury ${
@@ -104,7 +103,7 @@ export const Navigation = () => {
                 size="sm"
                 className="glass-luxury border-primary/20 text-primary hover:bg-primary hover:text-primary-foreground transition-luxury font-semibold px-6 rounded-xl shadow-soft hover:shadow-glow"
               >
-                Get Quote
+                contact us
               </Button>
             </div>
             
