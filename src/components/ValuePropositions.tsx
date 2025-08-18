@@ -158,11 +158,38 @@ export const ValuePropositions = () => {
           className="text-center mt-20"
         >
           <div className="inline-flex items-center gap-4 glass-luxury rounded-full px-8 py-4 shadow-medium">
-            <span className="text-sm text-muted-foreground font-inter">Trusted by luxury spas worldwide</span>
-            <div className="flex -space-x-2">
-              {[...Array(5)].map((_, i) => (
-                <div key={i} className={`w-8 h-8 rounded-full ${i % 2 === 0 ? 'luxury-gradient' : 'ocean-gradient'} border-2 border-white shadow-soft`} />
-              ))}
+            <span className="text-sm text-muted-foreground font-inter">Trusted by international wholesale buyers worldwide</span>
+            <div className="flex items-center gap-3">
+              {/* Current clients */}
+              <div className="flex -space-x-1">
+                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white shadow-soft">
+                  <div className="w-full h-full bg-blue-500 flex items-center justify-center text-white text-xs font-bold">🇬🇷</div>
+                </div>
+                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white shadow-soft">
+                  <div className="w-full h-full bg-blue-500 flex items-center justify-center text-white text-xs font-bold">🇫🇷</div>
+                </div>
+                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white shadow-soft">
+                  <div className="w-full h-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">🇮🇹</div>
+                </div>
+                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white shadow-soft">
+                  <div className="w-full h-full bg-red-500 flex items-center justify-center text-white text-xs font-bold">🇩🇪</div>
+                </div>
+              </div>
+              
+              <div className="w-px h-6 bg-muted-foreground/20" />
+              
+              {/* Prospective clients */}
+              <div className="flex -space-x-1 opacity-60">
+                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white shadow-soft">
+                  <div className="w-full h-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold">🇺🇸</div>
+                </div>
+                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white shadow-soft">
+                  <div className="w-full h-full bg-red-600 flex items-center justify-center text-white text-xs font-bold">🇨🇦</div>
+                </div>
+                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white shadow-soft">
+                  <div className="w-full h-full bg-red-500 flex items-center justify-center text-white text-xs font-bold">🇨🇳</div>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>

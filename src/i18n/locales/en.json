@@ -8,7 +8,7 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "Premium Natural Sea Sponges",
+    "title": "Wholesale Natural Sea Sponges",
     "subtitle": "Handcrafted from the Mediterranean Coast of Tunisia",
     "description": "Discover the luxury of Zarzis Éponge - where 40+ years of tradition meets sustainable harvesting to bring you the finest natural sea sponges.",
     "cta": "Discover Our Story"
@@ -17,44 +17,44 @@
     "title": "Why Choose Zarzis Éponge",
     "heritage": {
       "title": "40+ Years Heritage",
-      "description": "Four decades of expertise in Mediterranean sponge harvesting"
+      "description": "Four decades of expertise in Mediterranean sponge hand-harvesting and over 40 years of diving experience"
     },
     "direct": {
       "title": "Producer to Consumer",
-      "description": "Direct from our waters to your home, ensuring authenticity"
+      "description": "Direct from the Mediterranean Sea to your hands — ensuring authenticity, best quality, and fair pricing"
     },
     "certified": {
       "title": "Certified Quality",
-      "description": "Meeting international standards for natural bath products"
+      "description": "Certified by international health inspection standards and verified by doctors"
     },
     "eco": {
       "title": "Eco-Friendly Harvesting",
-      "description": "Sustainable practices preserving marine ecosystems"
+      "description": "Sustainably hand-harvested to preserve marine ecosystems"
     }
   },
   "about": {
     "title": "Crafted by Nature, Perfected by Time",
-    "description": "From the pristine waters of Zarzis, Tunisia, we bring you sponges that have been naturally formed over years in the Mediterranean Sea. Our family tradition spans generations, combining ancient harvesting techniques with modern quality standards.",
+    "description": "From the pristine waters of Zarzis, Djerba, Kerkennah, Mahdia, Qlibya in Tunisia, and Pantelleria, Lampedusa in Italy, we bring you sponges that have been naturally formed over years in the Mediterranean Sea. Our family tradition spans generations, combining ancient harvesting techniques with modern quality standards.",
     "cta": "Learn Our Story"
   },
   "services": {
     "title": "Our Process",
-    "subtitle": "From Sea to Your Home",
+    "subtitle": "From Sea to Your Hand",
     "step1": {
-      "title": "Sustainable Harvesting",
-      "description": "Careful collection from Mediterranean waters"
+      "title": "Hand Collection",
+      "description": "Careful hand collection"
     },
     "step2": {
       "title": "Natural Processing",
-      "description": "Traditional cleaning and preparation methods"
+      "description": "No chemicals or machines used"
     },
     "step3": {
-      "title": "Quality Control",
-      "description": "Rigorous testing for softness and durability"
+      "title": "Medical Monitoring",
+      "description": "Process monitored and approved by doctors"
     },
     "step4": {
-      "title": "Premium Packaging",
-      "description": "Eco-friendly packaging for worldwide delivery"
+      "title": "Safe Storage & Shipping",
+      "description": "Safely stocked, doctor-reviewed for safe storage, and shipped quickly by airplane or boat (based on client preference)"
     },
     "cta": "View Our Services"
   },
