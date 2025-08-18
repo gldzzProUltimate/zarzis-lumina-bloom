@@ -99,9 +99,9 @@ export const ValuePropositions = () => {
                   ease: "easeOut"
                 }}
                 whileHover={{ y: -12, scale: 1.02 }}
-                className="group relative"
+                className="group relative h-full"
               >
-                <div className={`glass-luxury rounded-3xl p-8 text-center transition-luxury hover:${value.shadowClass} relative overflow-hidden`}>
+                <div className={`glass-luxury rounded-3xl p-8 text-center transition-luxury hover:${value.shadowClass} relative overflow-hidden h-full flex flex-col`}>
                   {/* Background decoration */}
                   <div className={`absolute inset-0 ${value.gradient} opacity-0 group-hover:opacity-5 transition-luxury rounded-3xl`} />
                   
@@ -126,12 +126,12 @@ export const ValuePropositions = () => {
                     </motion.div>
                   </motion.div>
                   
-                  <div className="relative z-10">
+                  <div className="relative z-10 flex-1 flex flex-col">
                     <h3 className="text-xl lg:text-2xl font-semibold mb-6 text-foreground group-hover:text-primary transition-luxury">
                       {t(`values.${value.key}.title`)}
                     </h3>
                     
-                    <p className="text-muted-foreground leading-relaxed font-inter">
+                    <p className="text-muted-foreground leading-relaxed font-inter flex-1">
                       {t(`values.${value.key}.description`)}
                     </p>
                   </div>
@@ -149,50 +149,6 @@ export const ValuePropositions = () => {
           })}
         </div>
 
-        {/* Bottom decoration */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center mt-20"
-        >
-          <div className="inline-flex items-center gap-4 glass-luxury rounded-full px-8 py-4 shadow-medium">
-            <span className="text-sm text-muted-foreground font-inter">Trusted by international wholesale buyers worldwide</span>
-            <div className="flex items-center gap-3">
-              {/* Current clients */}
-              <div className="flex -space-x-1">
-                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white shadow-soft">
-                  <div className="w-full h-full bg-blue-500 flex items-center justify-center text-white text-xs font-bold">🇬🇷</div>
-                </div>
-                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white shadow-soft">
-                  <div className="w-full h-full bg-blue-500 flex items-center justify-center text-white text-xs font-bold">🇫🇷</div>
-                </div>
-                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white shadow-soft">
-                  <div className="w-full h-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">🇮🇹</div>
-                </div>
-                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white shadow-soft">
-                  <div className="w-full h-full bg-red-500 flex items-center justify-center text-white text-xs font-bold">🇩🇪</div>
-                </div>
-              </div>
-              
-              <div className="w-px h-6 bg-muted-foreground/20" />
-              
-              {/* Prospective clients */}
-              <div className="flex -space-x-1 opacity-60">
-                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white shadow-soft">
-                  <div className="w-full h-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold">🇺🇸</div>
-                </div>
-                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white shadow-soft">
-                  <div className="w-full h-full bg-red-600 flex items-center justify-center text-white text-xs font-bold">🇨🇦</div>
-                </div>
-                <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white shadow-soft">
-                  <div className="w-full h-full bg-red-500 flex items-center justify-center text-white text-xs font-bold">🇨🇳</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

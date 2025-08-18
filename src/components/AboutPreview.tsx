@@ -10,7 +10,7 @@ export const AboutPreview = () => {
 
   const stats = [
     { icon: Calendar, value: '40+', label: 'Years of Heritage', gradient: 'luxury-gradient' },
-    { icon: MapPin, value: '1', label: 'Pristine Location', gradient: 'ocean-gradient' },
+    { icon: MapPin, value: '7', label: 'Mediterranean Locations', gradient: 'ocean-gradient', locations: 'Zarzis, Djerba, Kerkennah, Mahdia, Qlibya, Pantelleria, Lampedusa' },
     { icon: Users, value: '1000+', label: 'Happy Customers', gradient: 'pearl-gradient' },
   ];
 
@@ -122,13 +122,18 @@ export const AboutPreview = () => {
                           <IconComponent className="h-8 w-8 text-white" />
                         </motion.div>
                         
-                        <div>
+                        <div className="flex-1">
                           <div className="text-3xl lg:text-4xl font-bold text-shimmer mb-2">
                             {stat.value}
                           </div>
-                          <div className="text-muted-foreground font-medium">
+                          <div className="text-muted-foreground font-medium mb-2">
                             {stat.label}
                           </div>
+                          {stat.locations && (
+                            <div className="text-xs text-muted-foreground/80 leading-relaxed">
+                              {stat.locations}
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>

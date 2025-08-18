@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigation } from '@/components/Navigation';
 import { HeroSection } from '@/components/HeroSection';
 import { ValuePropositions } from '@/components/ValuePropositions';
+import { TrustedClients } from '@/components/TrustedClients';
 import { AboutPreview } from '@/components/AboutPreview';
 import { ServicesPreview } from '@/components/ServicesPreview';
 import { ProductsPreview } from '@/components/ProductsPreview';
@@ -16,6 +17,7 @@ const Index = () => {
       <main>
         <HeroSection />
         <ValuePropositions />
+        <TrustedClients />
         <AboutPreview />
         <ServicesPreview />
         <ProductsPreview />
