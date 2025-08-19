@@ -101,9 +101,9 @@ export const ValuePropositions = () => {
                 whileHover={{ y: -12, scale: 1.02 }}
                 className="group relative h-full"
               >
-                <div className={`glass-luxury rounded-3xl p-8 text-center transition-luxury hover:${value.shadowClass} relative overflow-hidden h-full flex flex-col`}>
+                <div className={`glass-luxury rounded-3xl p-8 text-center transition-luxury lg:hover:${value.shadowClass} relative overflow-hidden h-full flex flex-col`}>
                   {/* Background decoration */}
-                  <div className={`absolute inset-0 ${value.gradient} opacity-0 group-hover:opacity-5 transition-luxury rounded-3xl`} />
+                  <div className={`absolute inset-0 ${value.gradient} opacity-0 lg:group-hover:opacity-5 transition-luxury rounded-3xl`} />
                   
                   {/* Icon container */}
                   <motion.div
@@ -127,7 +127,7 @@ export const ValuePropositions = () => {
                   </motion.div>
                   
                   <div className="relative z-10 flex-1 flex flex-col">
-                    <h3 className="text-xl lg:text-2xl font-semibold mb-6 text-foreground group-hover:text-primary transition-luxury">
+                    <h3 className="text-xl lg:text-2xl font-semibold mb-6 text-foreground lg:group-hover:text-primary transition-luxury">
                       {t(`values.${value.key}.title`)}
                     </h3>
                     
@@ -137,7 +137,7 @@ export const ValuePropositions = () => {
                   </div>
 
                   {/* Hover gradient border effect */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-luxury -z-10 blur-xl" />
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 opacity-0 lg:group-hover:opacity-100 transition-luxury -z-10 blur-xl" />
                 </div>
 
                 {/* Number badge */}

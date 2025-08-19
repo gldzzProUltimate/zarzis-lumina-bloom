@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Navigation } from '@/components/Navigation';
 import { StickyFloatingButtons } from '@/components/StickyFloatingButtons';
@@ -20,6 +20,19 @@ const Gallery = () => {
   const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState('all');
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  // Desktop detection
+  useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
 
   const categories = [
     { id: 'all', name: 'All Images', icon: Eye },
@@ -161,14 +174,14 @@ const Gallery = () => {
             {categories.map((category) => (
               <motion.button
                 key={category.id}
-                whileHover={{ scale: 1.05 }}
+                whileHover={isDesktop ? { scale: 1.05 } : {}}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveCategory(category.id)}
                 className={`
                   flex items-center gap-3 px-6 py-3 rounded-full transition-luxury shadow-soft
                   ${activeCategory === category.id 
                     ? 'luxury-gradient text-white shadow-luxury' 
-                    : 'glass-luxury text-foreground hover:text-primary hover:shadow-medium'
+                    : 'glass-luxury text-foreground lg:hover:text-primary lg:hover:shadow-medium'
                   }
                 `}
               >
@@ -196,20 +209,20 @@ const Gallery = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ duration: 0.6 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className="glass-luxury rounded-3xl overflow-hidden shadow-soft hover:shadow-luxury transition-luxury group cursor-pointer"
+                  whileHover={isDesktop ? { y: -8, scale: 1.02 } : {}}
+                  className="glass-luxury rounded-3xl overflow-hidden shadow-soft lg:hover:shadow-luxury transition-luxury group cursor-pointer"
                   onClick={() => openModal(galleryImages.findIndex(img => img.id === image.id))}
                 >
                   <div className="aspect-[4/3] overflow-hidden">
                     <img
                       src={image.src}
                       alt={image.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover lg:group-hover:scale-110 transition-transform duration-700"
                     />
                   </div>
                   
                   <div className="p-6">
-                    <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
+                    <h3 className="text-xl font-semibold text-foreground lg:group-hover:text-primary transition-colors mb-2">
                       {image.title}
                     </h3>
                     
@@ -251,7 +264,7 @@ const Gallery = () => {
               {/* Close Button */}
               <button
                 onClick={closeModal}
-                className="absolute -top-12 right-0 text-white hover:text-primary transition-colors z-10"
+                className="absolute -top-12 right-0 text-white lg:hover:text-primary transition-colors z-10"
               >
                 <X className="h-8 w-8" />
               </button>
@@ -259,14 +272,14 @@ const Gallery = () => {
               {/* Navigation Buttons */}
               <button
                 onClick={() => navigateImage('prev')}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-primary transition-colors z-10 bg-black/50 rounded-full p-2"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white lg:hover:text-primary transition-colors z-10 bg-black/50 rounded-full p-2"
               >
                 <ChevronLeft className="h-8 w-8" />
               </button>
               
               <button
                 onClick={() => navigateImage('next')}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-primary transition-colors z-10 bg-black/50 rounded-full p-2"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white lg:hover:text-primary transition-colors z-10 bg-black/50 rounded-full p-2"
               >
                 <ChevronRight className="h-8 w-8" />
               </button>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Navigation } from '@/components/Navigation';
 import { StickyFloatingButtons } from '@/components/StickyFloatingButtons';
@@ -20,6 +20,18 @@ import {
 
 const Products = () => {
   const { t } = useTranslation();
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
 
   const productTypes = [
     {
@@ -198,19 +210,19 @@ const Products = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="glass-luxury rounded-3xl p-8 hover:shadow-luxury transition-luxury group"
+                whileHover={isDesktop ? { y: -8, scale: 1.02 } : {}}
+                className="glass-luxury rounded-3xl p-8 lg:hover:shadow-luxury transition-luxury group"
               >
                 <div className="flex items-start gap-6 mb-6">
                   <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    className={`w-16 h-16 ${product.gradient} rounded-2xl flex items-center justify-center shadow-medium group-hover:shadow-glow transition-luxury flex-shrink-0`}
+                    whileHover={isDesktop ? { scale: 1.1, rotate: 5 } : {}}
+                    className={`w-16 h-16 ${product.gradient} rounded-2xl flex items-center justify-center shadow-medium lg:group-hover:shadow-glow transition-luxury flex-shrink-0`}
                   >
                     <product.icon className="h-8 w-8 text-white" />
                   </motion.div>
                   
                   <div className="flex-1">
-                    <h3 className="text-2xl font-semibold text-foreground group-hover:text-primary transition-colors mb-3">
+                    <h3 className="text-2xl font-semibold text-foreground lg:group-hover:text-primary transition-colors mb-3">
                       {product.name}
                     </h3>
                     <p className="text-muted-foreground leading-relaxed font-inter mb-6">
@@ -280,14 +292,14 @@ const Products = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="glass-luxury rounded-3xl p-8 text-center hover:shadow-luxury transition-luxury group"
+                whileHover={isDesktop ? { y: -8, scale: 1.02 } : {}}
+                className="glass-luxury rounded-3xl p-8 text-center lg:hover:shadow-luxury transition-luxury group"
               >
                 <div className={`text-4xl font-bold ${grade.color} mb-4`}>
                   {grade.percentage}
                 </div>
                 
-                <h3 className="text-2xl font-semibold text-foreground group-hover:text-primary transition-colors mb-4">
+                <h3 className="text-2xl font-semibold text-foreground lg:group-hover:text-primary transition-colors mb-4">
                   {grade.grade}
                 </h3>
                 
@@ -339,17 +351,17 @@ const Products = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                whileHover={{ y: -8, scale: 1.05 }}
-                className="glass-luxury rounded-3xl p-8 text-center hover:shadow-luxury transition-luxury group"
+                whileHover={isDesktop ? { y: -8, scale: 1.05 } : {}}
+                className="glass-luxury rounded-3xl p-8 text-center lg:hover:shadow-luxury transition-luxury group"
               >
                 <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  className="w-16 h-16 luxury-gradient rounded-2xl flex items-center justify-center shadow-medium group-hover:shadow-glow transition-luxury mx-auto mb-6"
+                  whileHover={isDesktop ? { scale: 1.1, rotate: 5 } : {}}
+                  className="w-16 h-16 luxury-gradient rounded-2xl flex items-center justify-center shadow-medium lg:group-hover:shadow-glow transition-luxury mx-auto mb-6"
                 >
                   <spec.icon className="h-8 w-8 text-white" />
                 </motion.div>
                 
-                <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors mb-4">
+                <h3 className="text-xl font-semibold text-foreground lg:group-hover:text-primary transition-colors mb-4">
                   {spec.title}
                 </h3>
                 
@@ -396,10 +408,10 @@ const Products = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="glass-luxury rounded-3xl p-8 hover:shadow-luxury transition-luxury group"
+                whileHover={isDesktop ? { y: -8, scale: 1.02 } : {}}
+                className="glass-luxury rounded-3xl p-8 lg:hover:shadow-luxury transition-luxury group"
               >
-                <h3 className="text-2xl font-semibold text-foreground group-hover:text-primary transition-colors mb-3">
+                <h3 className="text-2xl font-semibold text-foreground lg:group-hover:text-primary transition-colors mb-3">
                   {application.category}
                 </h3>
                 

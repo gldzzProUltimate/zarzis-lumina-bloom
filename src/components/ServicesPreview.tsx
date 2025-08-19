@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -7,6 +7,18 @@ import { motion } from 'framer-motion';
 
 export const ServicesPreview = () => {
   const { t } = useTranslation();
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
 
   const steps = [
     { key: 'step1', icon: Anchor, color: 'text-secondary' },
@@ -51,9 +63,9 @@ export const ServicesPreview = () => {
                     <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-gradient-to-r from-primary/30 to-secondary/30 z-0" />
                   )}
 
-                  <div className="glass rounded-2xl p-8 text-center relative z-10 transition-smooth hover:shadow-ocean">
+                  <div className="glass rounded-2xl p-8 text-center relative z-10 transition-smooth lg:hover:shadow-ocean">
                     <motion.div
-                      whileHover={{ scale: 1.1, rotate: 10 }}
+                      whileHover={isDesktop ? { scale: 1.1, rotate: 10 } : {}}
                       className={`inline-flex items-center justify-center w-16 h-16 rounded-full mb-6 ${
                         step.color === 'text-primary' ? 'bg-primary/10' : 'bg-secondary/10'
                       }`}
@@ -61,7 +73,7 @@ export const ServicesPreview = () => {
                       <IconComponent className={`h-8 w-8 ${step.color}`} />
                     </motion.div>
 
-                    <h3 className="text-xl font-semibold mb-4 text-foreground group-hover:text-primary transition-smooth">
+                    <h3 className="text-xl font-semibold mb-4 text-foreground lg:group-hover:text-primary transition-smooth">
                       {t(`services.${step.key}.title`)}
                     </h3>
 
@@ -91,10 +103,10 @@ export const ServicesPreview = () => {
             <Link to="/services">
               <Button 
                 size="lg" 
-                className="ocean-gradient text-white shadow-ocean hover:shadow-glow transition-smooth group px-8 py-6 text-lg"
+                className="ocean-gradient text-white shadow-ocean lg:hover:shadow-glow transition-smooth group px-8 py-6 text-lg"
               >
                 {t('services.cta')}
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform lg:group-hover:translate-x-1" />
               </Button>
             </Link>
           </motion.div>

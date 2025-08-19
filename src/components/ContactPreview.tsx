@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -7,6 +7,18 @@ import { motion } from 'framer-motion';
 
 export const ContactPreview = () => {
   const { t } = useTranslation();
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
 
   return (
     <section className="py-24 bg-gradient-to-b from-background to-secondary-subtle/20">
@@ -38,8 +50,8 @@ export const ContactPreview = () => {
             >
               <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-6">
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="glass rounded-xl p-6 flex items-center space-x-4 transition-smooth hover:shadow-soft"
+                  whileHover={isDesktop ? { scale: 1.02 } : {}}
+                  className="glass rounded-xl p-6 flex items-center space-x-4 transition-smooth lg:hover:shadow-soft"
                 >
                   <div className="flex-shrink-0">
                     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -53,8 +65,8 @@ export const ContactPreview = () => {
                 </motion.div>
 
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="glass rounded-xl p-6 flex items-center space-x-4 transition-smooth hover:shadow-soft"
+                  whileHover={isDesktop ? { scale: 1.02 } : {}}
+                  className="glass rounded-xl p-6 flex items-center space-x-4 transition-smooth lg:hover:shadow-soft"
                 >
                   <div className="flex-shrink-0">
                     <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
@@ -68,8 +80,8 @@ export const ContactPreview = () => {
                 </motion.div>
 
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="glass rounded-xl p-6 flex items-center space-x-4 transition-smooth hover:shadow-soft"
+                  whileHover={isDesktop ? { scale: 1.02 } : {}}
+                  className="glass rounded-xl p-6 flex items-center space-x-4 transition-smooth lg:hover:shadow-soft"
                 >
                   <div className="flex-shrink-0">
                     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -86,10 +98,10 @@ export const ContactPreview = () => {
               <Link to="/contact">
                 <Button 
                   size="lg" 
-                  className="w-full md:w-auto ocean-gradient text-white shadow-ocean hover:shadow-glow transition-smooth group px-8 py-6 text-lg"
+                  className="w-full md:w-auto ocean-gradient text-white shadow-ocean lg:hover:shadow-glow transition-smooth group px-8 py-6 text-lg"
                 >
                   {t('contact.cta')}
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform lg:group-hover:translate-x-1" />
                 </Button>
               </Link>
             </motion.div>
@@ -112,7 +124,7 @@ export const ContactPreview = () => {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Zarzis, Tunisia Location"
-                  className="grayscale hover:grayscale-0 transition-all duration-500"
+                  className="grayscale lg:hover:grayscale-0 transition-all duration-500"
                 />
               </div>
             </motion.div>

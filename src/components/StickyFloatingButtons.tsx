@@ -9,6 +9,18 @@ export const StickyFloatingButtons = () => {
   const { t } = useTranslation();
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   // Show scroll to top button when user scrolls down
   useEffect(() => {
@@ -52,28 +64,28 @@ export const StickyFloatingButtons = () => {
       icon: Facebook,
       label: t('social.facebook'),
       onClick: handleFacebook,
-      className: 'bg-[#1877F2] hover:bg-[#1877F2]/90 text-white shadow-medium hover:shadow-large',
+      className: 'bg-[#1877F2] lg:hover:bg-[#1877F2]/90 text-white shadow-medium lg:hover:shadow-large',
       delay: 0.1,
     },
     {
       icon: MessageCircle,
       label: t('social.whatsapp'),
       onClick: handleWhatsApp,
-      className: 'bg-[#25D366] hover:bg-[#25D366]/90 text-white shadow-medium hover:shadow-large',
+      className: 'bg-[#25D366] lg:hover:bg-[#25D366]/90 text-white shadow-medium lg:hover:shadow-large',
       delay: 0.2,
     },
     {
       icon: Phone,
       label: 'Call Us',
       onClick: handlePhone,
-      className: 'luxury-gradient text-white shadow-luxury hover:shadow-glow',
+      className: 'luxury-gradient text-white shadow-luxury lg:hover:shadow-glow',
       delay: 0.3,
     },
     {
       icon: Mail,
       label: t('social.email'),
       onClick: handleEmail,
-      className: 'ocean-gradient text-white shadow-ocean hover:shadow-glow',
+      className: 'ocean-gradient text-white shadow-ocean lg:hover:shadow-glow',
       delay: 0.4,
     },
   ];
@@ -92,7 +104,7 @@ export const StickyFloatingButtons = () => {
               <Button
                 size="lg"
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="h-16 w-16 rounded-full luxury-gradient text-white shadow-luxury hover:shadow-glow transition-luxury group relative overflow-hidden"
+                className="h-16 w-16 rounded-full luxury-gradient text-white shadow-luxury lg:hover:shadow-glow transition-luxury group relative overflow-hidden"
               >
                 <motion.div
                   animate={{ rotate: isExpanded ? 45 : 0 }}
@@ -137,7 +149,7 @@ export const StickyFloatingButtons = () => {
                           type: "spring", 
                           stiffness: 300 
                         }}
-                        whileHover={{ scale: 1.1, x: -5 }}
+                        whileHover={isDesktop ? { scale: 1.1, x: -5 } : {}}
                         whileTap={{ scale: 0.95 }}
                       >
                         <Button
@@ -172,14 +184,14 @@ export const StickyFloatingButtons = () => {
                   initial={{ opacity: 0, scale: 0, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0, y: 20 }}
-                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileHover={isDesktop ? { scale: 1.1, y: -2 } : {}}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <Button
                     size="sm"
                     onClick={scrollToTop}
-                    className="h-12 w-12 rounded-xl glass-luxury hover:bg-primary/20 text-primary shadow-soft hover:shadow-medium transition-luxury"
+                    className="h-12 w-12 rounded-xl glass-luxury lg:hover:bg-primary/20 text-primary shadow-soft lg:hover:shadow-medium transition-luxury"
                   >
                     <ChevronUp className="h-5 w-5" />
                     <span className="sr-only">Scroll to top</span>

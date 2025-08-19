@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -7,6 +7,18 @@ import { motion } from 'framer-motion';
 
 export const ProductsPreview = () => {
   const { t } = useTranslation();
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
 
   // Placeholder product categories
   const productCategories = [
@@ -58,17 +70,17 @@ export const ProductsPreview = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -8 }}
+              whileHover={isDesktop ? { y: -8 } : {}}
               className="group cursor-pointer"
             >
-              <div className="glass rounded-2xl overflow-hidden transition-smooth hover:shadow-ocean">
+              <div className="glass rounded-2xl overflow-hidden transition-smooth lg:hover:shadow-ocean">
                 <div className="relative overflow-hidden">
                   <img
                     src={product.image}
                     alt={product.title}
-                    className="w-full h-48 object-cover transition-smooth group-hover:scale-110"
+                    className="w-full h-48 object-cover transition-smooth lg:group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-smooth" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 lg:group-hover:opacity-100 transition-smooth" />
                 </div>
                 
                 <div className="p-6">
@@ -81,7 +93,7 @@ export const ProductsPreview = () => {
                     ))}
                   </div>
                   
-                  <h3 className="text-lg font-semibold mb-3 text-foreground group-hover:text-primary transition-smooth">
+                  <h3 className="text-lg font-semibold mb-3 text-foreground lg:group-hover:text-primary transition-smooth">
                     {product.title}
                   </h3>
                   
@@ -105,10 +117,10 @@ export const ProductsPreview = () => {
             <Button 
               size="lg" 
               variant="outline"
-              className="group px-8 py-6 text-lg border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth shadow-soft hover:shadow-glow"
+              className="group px-8 py-6 text-lg border-primary text-primary lg:hover:bg-primary lg:hover:text-primary-foreground transition-smooth shadow-soft lg:hover:shadow-glow"
             >
               {t('products.cta')}
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform lg:group-hover:translate-x-1" />
             </Button>
           </Link>
         </motion.div>

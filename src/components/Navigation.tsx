@@ -12,6 +12,7 @@ export const Navigation = () => {
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   const navItems = [
     { key: 'home', path: '/' },
@@ -27,8 +28,18 @@ export const Navigation = () => {
       setIsScrolled(window.scrollY > 30);
     };
 
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    
+    checkIsDesktop();
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', checkIsDesktop);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', checkIsDesktop);
+    };
   }, []);
 
   return (
@@ -46,13 +57,13 @@ export const Navigation = () => {
           {/* Enhanced Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <motion.div
-              whileHover={{ scale: 1.05, rotate: 5 }}
-              className="w-10 h-10 luxury-gradient rounded-xl flex items-center justify-center shadow-medium group-hover:shadow-glow transition-luxury"
+              whileHover={isDesktop ? { scale: 1.05, rotate: 5 } : {}}
+              className="w-10 h-10 luxury-gradient rounded-xl flex items-center justify-center shadow-medium lg:group-hover:shadow-glow transition-luxury"
             >
               <Waves className="h-6 w-6 text-white" />
             </motion.div>
             <motion.div
-              whileHover={{ scale: 1.02 }}
+              whileHover={isDesktop ? { scale: 1.02 } : {}}
               className="flex flex-col"
             >
               <span className="text-2xl lg:text-3xl font-bold text-shimmer">
@@ -70,7 +81,7 @@ export const Navigation = () => {
               <Link
                 key={item.key}
                 to={item.path}
-                className={`relative px-4 py-2 text-sm font-medium transition-luxury hover:text-primary group ${
+                className={`relative px-4 py-2 text-sm font-medium transition-luxury lg:hover:text-primary group ${
                   location.pathname === item.path
                     ? 'text-primary'
                     : 'text-foreground/80'
@@ -79,7 +90,7 @@ export const Navigation = () => {
                 <span className="relative z-10">{t(`nav.${item.key}`)}</span>
                 
                 {/* Enhanced hover effect */}
-                <div className="absolute inset-0 rounded-xl bg-primary/10 scale-0 group-hover:scale-100 transition-luxury opacity-0 group-hover:opacity-100" />
+                <div className="absolute inset-0 rounded-xl bg-primary/10 scale-0 lg:group-hover:scale-100 transition-luxury opacity-0 lg:group-hover:opacity-100" />
                 
                 {/* Active indicator */}
                 {location.pathname === item.path && (
@@ -145,7 +156,7 @@ export const Navigation = () => {
                       <Link
                         to={item.path}
                         onClick={() => setIsOpen(false)}
-                        className={`block text-lg font-medium transition-luxury hover:text-primary p-3 rounded-xl hover:bg-primary/5 ${
+                        className={`block text-lg font-medium transition-luxury lg:hover:text-primary p-3 rounded-xl lg:hover:bg-primary/5 ${
                           location.pathname === item.path
                             ? 'text-primary bg-primary/10'
                             : 'text-foreground/80'
@@ -164,7 +175,7 @@ export const Navigation = () => {
                     className="pt-8 border-t border-primary/10"
                   >
                     <Button 
-                      className="w-full luxury-gradient text-white shadow-luxury hover:shadow-glow transition-luxury font-semibold py-3 rounded-xl"
+                      className="w-full luxury-gradient text-white shadow-luxury lg:hover:shadow-glow transition-luxury font-semibold py-3 rounded-xl"
                       onClick={() => setIsOpen(false)}
                     >
                       Get Your Premium Sponges

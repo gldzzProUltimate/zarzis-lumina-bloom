@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Navigation } from '@/components/Navigation';
 import { StickyFloatingButtons } from '@/components/StickyFloatingButtons';
@@ -26,6 +26,7 @@ import {
 
 const Contact = () => {
   const { t } = useTranslation();
+  const [isDesktop, setIsDesktop] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -34,6 +35,17 @@ const Contact = () => {
     inquiryType: '',
     message: ''
   });
+
+  useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -220,17 +232,17 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                whileHover={{ y: -8, scale: 1.05 }}
-                className="glass-luxury rounded-3xl p-8 text-center hover:shadow-luxury transition-luxury group"
+                whileHover={isDesktop ? { y: -8, scale: 1.05 } : {}}
+                className="glass-luxury rounded-3xl p-8 text-center lg:hover:shadow-luxury transition-luxury group"
               >
                 <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  className={`w-16 h-16 ${info.gradient} rounded-2xl flex items-center justify-center shadow-medium group-hover:shadow-glow transition-luxury mx-auto mb-6`}
+                  whileHover={isDesktop ? { scale: 1.1, rotate: 5 } : {}}
+                  className={`w-16 h-16 ${info.gradient} rounded-2xl flex items-center justify-center shadow-medium lg:group-hover:shadow-glow transition-luxury mx-auto mb-6`}
                 >
                   <info.icon className="h-8 w-8 text-white" />
                 </motion.div>
                 
-                <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
+                <h3 className="text-xl font-semibold text-foreground lg:group-hover:text-primary transition-colors mb-2">
                   {info.title}
                 </h3>
                 
@@ -369,7 +381,7 @@ const Contact = () => {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full luxury-gradient text-white hover:shadow-luxury transition-luxury"
+                  className="w-full luxury-gradient text-white lg:hover:shadow-luxury transition-luxury"
                 >
                   <Send className="h-5 w-5 mr-2" />
                   Send Message
@@ -402,7 +414,7 @@ const Contact = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                    className="glass-luxury rounded-2xl p-6 hover:shadow-medium transition-luxury"
+                    className="glass-luxury rounded-2xl p-6 lg:hover:shadow-medium transition-luxury"
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 ocean-gradient rounded-xl flex items-center justify-center shadow-medium flex-shrink-0">

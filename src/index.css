@@ -331,8 +331,10 @@ Colors: Golden sand #c4a866, Deep ocean #4a90a4, Pearl white, Rich gradients
     transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .btn-luxury:hover::before {
-    left: 100%;
+  @media (min-width: 1024px) {
+    .btn-luxury:hover::before {
+      left: 100%;
+    }
   }
 
   /* Premium focus states */

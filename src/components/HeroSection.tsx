@@ -32,6 +32,19 @@ export const HeroSection = () => {
   const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  // Desktop detection
+  useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
 
   // Auto-advance slides
   useEffect(() => {
@@ -143,19 +156,19 @@ export const HeroSection = () => {
               <Link to="/about">
                 <Button 
                   size="lg" 
-                  className="btn-luxury luxury-gradient text-white shadow-luxury hover:shadow-ocean transition-luxury group px-10 py-7 text-lg font-semibold rounded-2xl focus-luxury"
+                  className="btn-luxury luxury-gradient text-white shadow-luxury lg:hover:shadow-ocean transition-luxury group px-10 py-7 text-lg font-semibold rounded-2xl focus-luxury"
                   onMouseEnter={() => setIsAutoPlaying(false)}
                   onMouseLeave={() => setIsAutoPlaying(true)}
                 >
                   {t('hero.cta')}
-                  <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-2" />
+                  <ArrowRight className="ml-3 h-6 w-6 transition-transform lg:group-hover:translate-x-2" />
                 </Button>
               </Link>
               
               <Button 
                 variant="outline" 
                 size="lg"
-                className="glass-luxury border-2 border-primary/20 text-primary hover:bg-primary/10 transition-luxury px-10 py-7 text-lg font-semibold rounded-2xl focus-luxury"
+                className="glass-luxury border-2 border-primary/20 text-primary lg:hover:bg-primary/10 transition-luxury px-10 py-7 text-lg font-semibold rounded-2xl focus-luxury"
               >
                 View Collection
               </Button>
@@ -171,7 +184,7 @@ export const HeroSection = () => {
             variant="ghost"
             size="sm"
             onClick={prevSlide}
-            className="glass-luxury h-14 w-14 p-0 hover:bg-primary/20 transition-luxury rounded-full shadow-medium"
+            className="glass-luxury h-14 w-14 p-0 lg:hover:bg-primary/20 transition-luxury rounded-full shadow-medium"
           >
             <ChevronLeft className="h-6 w-6" />
           </Button>
@@ -184,7 +197,7 @@ export const HeroSection = () => {
                 className={`w-4 h-4 rounded-full transition-luxury ${
                   index === currentSlide
                     ? 'luxury-gradient shadow-glow scale-125'
-                    : 'bg-white/40 hover:bg-white/60 shadow-soft'
+                    : 'bg-white/40 lg:hover:bg-white/60 shadow-soft'
                 }`}
               />
             ))}
@@ -194,7 +207,7 @@ export const HeroSection = () => {
             variant="ghost"
             size="sm"
             onClick={nextSlide}
-            className="glass-luxury h-14 w-14 p-0 hover:bg-primary/20 transition-luxury rounded-full shadow-medium"
+            className="glass-luxury h-14 w-14 p-0 lg:hover:bg-primary/20 transition-luxury rounded-full shadow-medium"
           >
             <ChevronRight className="h-6 w-6" />
           </Button>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -7,6 +7,18 @@ import { motion } from 'framer-motion';
 
 export const AboutPreview = () => {
   const { t } = useTranslation();
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
 
   const stats = [
     { icon: Calendar, value: '40+', label: 'Years of Heritage', gradient: 'luxury-gradient' },
@@ -61,10 +73,10 @@ export const AboutPreview = () => {
               </motion.div>
 
               <motion.div
-                whileHover={{ scale: 1.02 }}
+                whileHover={isDesktop ? { scale: 1.02 } : {}}
                 className="inline-flex items-center justify-center w-20 h-20 rounded-3xl luxury-gradient mb-8 shadow-luxury group"
               >
-                <Waves className="h-10 w-10 text-white group-hover:scale-110 transition-luxury" />
+                <Waves className="h-10 w-10 text-white lg:group-hover:scale-110 transition-luxury" />
               </motion.div>
 
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 leading-tight text-balance">
@@ -85,10 +97,10 @@ export const AboutPreview = () => {
                 <Button 
                   size="lg" 
                   variant="outline"
-                  className="btn-luxury group px-10 py-6 text-lg font-semibold border-2 border-primary/20 text-primary hover:bg-primary hover:text-primary-foreground transition-luxury shadow-soft hover:shadow-glow rounded-2xl focus-luxury"
+                  className="btn-luxury group px-10 py-6 text-lg font-semibold border-2 border-primary/20 text-primary lg:hover:bg-primary lg:hover:text-primary-foreground transition-luxury shadow-soft lg:hover:shadow-glow rounded-2xl focus-luxury"
                 >
                   {t('about.cta')}
-                  <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-2" />
+                  <ArrowRight className="ml-3 h-6 w-6 transition-transform lg:group-hover:translate-x-2" />
                 </Button>
               </Link>
             </motion.div>
@@ -110,14 +122,14 @@ export const AboutPreview = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                    whileHover={{ y: -8, scale: 1.02 }}
+                    whileHover={isDesktop ? { y: -8, scale: 1.02 } : {}}
                     className="group"
                   >
-                    <div className="glass-luxury rounded-3xl p-8 transition-luxury hover:shadow-luxury">
+                    <div className="glass-luxury rounded-3xl p-8 transition-luxury lg:hover:shadow-luxury">
                       <div className="flex items-center gap-6">
                         <motion.div
-                          whileHover={{ scale: 1.1, rotate: 5 }}
-                          className={`w-16 h-16 ${stat.gradient} rounded-2xl flex items-center justify-center shadow-medium group-hover:shadow-glow transition-luxury`}
+                          whileHover={isDesktop ? { scale: 1.1, rotate: 5 } : {}}
+                          className={`w-16 h-16 ${stat.gradient} rounded-2xl flex items-center justify-center shadow-medium lg:group-hover:shadow-glow transition-luxury`}
                         >
                           <IconComponent className="h-8 w-8 text-white" />
                         </motion.div>

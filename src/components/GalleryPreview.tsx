@@ -8,6 +8,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 export const GalleryPreview = () => {
   const { t } = useTranslation();
   const [currentImage, setCurrentImage] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
 
   // Gallery images - using placeholder images for now
   const galleryImages = [
@@ -92,14 +104,14 @@ export const GalleryPreview = () => {
             {/* Carousel Controls */}
             <button
               onClick={prevImage}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 glass rounded-full p-3 hover:bg-primary/20 transition-smooth"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 glass rounded-full p-3 lg:hover:bg-primary/20 transition-smooth"
             >
               <ChevronLeft className="h-6 w-6 text-white" />
             </button>
             
             <button
               onClick={nextImage}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 glass rounded-full p-3 hover:bg-primary/20 transition-smooth"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 glass rounded-full p-3 lg:hover:bg-primary/20 transition-smooth"
             >
               <ChevronRight className="h-6 w-6 text-white" />
             </button>
@@ -113,7 +125,7 @@ export const GalleryPreview = () => {
                   className={`w-3 h-3 rounded-full transition-smooth ${
                     index === currentImage
                       ? 'bg-primary shadow-glow'
-                      : 'bg-white/40 hover:bg-white/60'
+                      : 'bg-white/40 lg:hover:bg-white/60'
                   }`}
                 />
               ))}
@@ -125,12 +137,12 @@ export const GalleryPreview = () => {
             {galleryImages.map((image, index) => (
               <motion.div
                 key={index}
-                whileHover={{ scale: 1.05 }}
+                whileHover={isDesktop ? { scale: 1.05 } : {}}
                 onClick={() => setCurrentImage(index)}
                 className={`cursor-pointer rounded-xl overflow-hidden transition-smooth ${
                   index === currentImage
                     ? 'ring-2 ring-primary shadow-glow'
-                    : 'hover:ring-2 hover:ring-primary/50'
+                    : 'lg:hover:ring-2 lg:hover:ring-primary/50'
                 }`}
               >
                 <img
@@ -152,10 +164,10 @@ export const GalleryPreview = () => {
             <Link to="/gallery">
               <Button 
                 size="lg" 
-                className="sand-gradient text-primary shadow-soft hover:shadow-glow transition-smooth group px-8 py-6 text-lg"
+                className="sand-gradient text-primary shadow-soft lg:hover:shadow-glow transition-smooth group px-8 py-6 text-lg"
               >
                 {t('gallery.cta')}
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform lg:group-hover:translate-x-1" />
               </Button>
             </Link>
           </motion.div>

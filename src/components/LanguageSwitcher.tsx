@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
@@ -14,6 +14,18 @@ const languages = [
 
 export const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
 
   const handleLanguageChange = (langCode: string) => {
     i18n.changeLanguage(langCode);
@@ -27,10 +39,10 @@ export const LanguageSwitcher = () => {
         <Button 
           variant="ghost" 
           size="sm" 
-          className="h-11 w-11 px-0 glass-luxury hover:bg-primary/10 transition-luxury rounded-xl shadow-soft hover:shadow-medium group"
+          className="h-11 w-11 px-0 glass-luxury lg:hover:bg-primary/10 transition-luxury rounded-xl shadow-soft lg:hover:shadow-medium group"
         >
           <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
+            whileHover={isDesktop ? { scale: 1.1, rotate: 5 } : {}}
             transition={{ type: "spring", stiffness: 300 }}
           >
             <Globe className="h-5 w-5" />
@@ -60,7 +72,7 @@ export const LanguageSwitcher = () => {
               className={`cursor-pointer transition-luxury rounded-xl p-3 m-1 group ${
                 i18n.language === language.code 
                   ? 'bg-primary/10 text-primary shadow-soft' 
-                  : 'hover:bg-primary/5 hover:text-primary'
+                  : 'lg:hover:bg-primary/5 lg:hover:text-primary'
               }`}
             >
               <div className="flex items-center justify-between w-full">
