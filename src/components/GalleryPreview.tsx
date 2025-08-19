@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Camera } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const GalleryPreview = () => {
@@ -72,10 +72,11 @@ export const GalleryPreview = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 hero-gradient bg-clip-text text-transparent">
-            {t('gallery.title')}
-          </h2>
-          <p className="text-xl mb-8 leading-relaxed max-w-3xl mx-auto bg-gradient-to-r from-primary via-secondary to-primary text-transparent bg-clip-text inline-block">
+          <div className="inline-flex items-center gap-2 glass-luxury rounded-full px-6 py-3 mb-6 shadow-medium">
+            <Camera className="h-4 w-4 text-primary" />
+            <span className="text-sm font-medium text-primary tracking-wide">{t('gallery.title').toUpperCase()}</span>
+          </div>
+          <p className="text-xl mb-8 leading-relaxed max-w-3xl mx-auto bg-gradient-to-r from-primary via-secondary to-primary text-transparent bg-clip-text block">
             {t('gallery.description')}
           </p>
         </motion.div>
