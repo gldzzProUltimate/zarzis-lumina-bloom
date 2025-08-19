@@ -40,7 +40,7 @@ export const ServicesPreview = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-6 hero-gradient bg-clip-text text-transparent">
             {t('services.title')}
           </h2>
-          <p className="text-xl text-secondary mb-8 font-medium">
+          <p className="text-xl mb-8 font-medium bg-gradient-to-r from-primary via-secondary to-primary text-transparent bg-clip-text inline-block">
             {t('services.subtitle')}
           </p>
         </motion.div>

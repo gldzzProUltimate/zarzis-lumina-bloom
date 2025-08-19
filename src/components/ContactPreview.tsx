@@ -33,7 +33,7 @@ export const ContactPreview = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-6 hero-gradient bg-clip-text text-transparent">
             {t('contact.title')}
           </h2>
-          <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-xl mb-8 leading-relaxed max-w-3xl mx-auto bg-gradient-to-r from-primary via-secondary to-primary text-transparent bg-clip-text inline-block">
             {t('contact.description')}
           </p>
         </motion.div>
