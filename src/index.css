@@ -83,9 +83,14 @@ Colors: Golden sand #c4a866, Deep ocean #4a90a4, Pearl white, Rich gradients
     --shadow-luxury: 0 25px 80px -20px hsl(var(--accent-gold) / 0.3);
 
     /* Enhanced animation variables */
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --transition-luxury: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-luxury: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
+  /* Performance optimization variables */
+  --gpu-acceleration: translateZ(0);
+  --backface-visibility: hidden;
+  --perspective: 1000px;
 
     /* Sidebar variables */
     --sidebar-background: 0 0% 98%;
@@ -276,17 +281,26 @@ Colors: Golden sand #c4a866, Deep ocean #4a90a4, Pearl white, Rich gradients
     box-shadow: var(--shadow-luxury);
   }
 
-  /* Premium transition utilities */
+  /* Premium transition utilities with GPU acceleration */
   .transition-smooth {
     transition: var(--transition-smooth);
+    will-change: transform, opacity;
+    transform: var(--gpu-acceleration);
+    backface-visibility: var(--backface-visibility);
   }
 
   .transition-bounce {
     transition: var(--transition-bounce);
+    will-change: transform, opacity;
+    transform: var(--gpu-acceleration);
+    backface-visibility: var(--backface-visibility);
   }
 
   .transition-luxury {
     transition: var(--transition-luxury);
+    will-change: transform, opacity, box-shadow;
+    transform: var(--gpu-acceleration);
+    backface-visibility: var(--backface-visibility);
   }
 
   /* Enhanced text effects */
@@ -305,8 +319,35 @@ Colors: Golden sand #c4a866, Deep ocean #4a90a4, Pearl white, Rich gradients
   }
 
   @keyframes shimmer {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+    0%, 100% { 
+      background-position: 0% 50%; 
+      transform: var(--gpu-acceleration);
+    }
+    50% { 
+      background-position: 100% 50%; 
+      transform: var(--gpu-acceleration);
+    }
+  }
+  
+  /* Performance-optimized animations */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) var(--gpu-acceleration);
+    }
+    50% {
+      transform: translateY(-10px) var(--gpu-acceleration);
+    }
+  }
+  
+  @keyframes pulse-optimized {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1) var(--gpu-acceleration);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.05) var(--gpu-acceleration);
+    }
   }
 
   /* Luxury button effects */
@@ -342,5 +383,77 @@ Colors: Golden sand #c4a866, Deep ocean #4a90a4, Pearl white, Rich gradients
     @apply focus:outline-none focus:ring-4;
     ring-color: hsl(var(--primary) / 0.3);
     ring-offset-color: hsl(var(--background));
+  }
+  
+  /* Performance-optimized utility classes */
+  .gpu-accelerated {
+    transform: var(--gpu-acceleration);
+    will-change: transform;
+    backface-visibility: var(--backface-visibility);
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+    will-change: transform;
+    transform: var(--gpu-acceleration);
+  }
+  
+  .animate-pulse-optimized {
+    animation: pulse-optimized 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    will-change: opacity, transform;
+    transform: var(--gpu-acceleration);
+  }
+  
+  /* Optimized hover effects */
+  .hover-scale {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    transform: var(--gpu-acceleration);
+  }
+  
+  @media (min-width: 1024px) {
+    .hover-scale:hover {
+      transform: scale(1.05) var(--gpu-acceleration);
+    }
+  }
+  
+  .hover-lift {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, box-shadow;
+    transform: var(--gpu-acceleration);
+  }
+  
+  @media (min-width: 1024px) {
+    .hover-lift:hover {
+      transform: translateY(-4px) var(--gpu-acceleration);
+    }
+  }
+  
+  /* Optimized glass effects */
+  .glass-optimized {
+    @apply bg-gradient-to-br from-white/80 to-white/40 backdrop-blur-xl border border-white/30;
+    box-shadow: 
+      0 8px 32px 0 rgba(31, 38, 135, 0.37),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+    will-change: backdrop-filter;
+    transform: var(--gpu-acceleration);
+  }
+  
+  /* Performance hints for common patterns */
+  .transform-gpu {
+    transform: var(--gpu-acceleration);
+    will-change: transform;
+  }
+  
+  .contain-layout {
+    contain: layout;
+  }
+  
+  .contain-paint {
+    contain: paint;
+  }
+  
+  .contain-strict {
+    contain: strict;
   }
 }

@@ -76,30 +76,35 @@ export const HeroSection = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0, scale: 1.05 }}
+            initial={{ opacity: 0, scale: 1.02 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 1.2 }}
-            className="absolute inset-0"
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ 
+              duration: 0.8,
+              ease: [0.4, 0, 0.2, 1]
+            }}
+            className="absolute inset-0 gpu-accelerated"
           >
             <img
               src={heroImages[currentSlide].src}
               alt={heroImages[currentSlide].alt}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transform-gpu"
+              loading="eager"
+              decoding="async"
             />
             {/* Enhanced overlay with dynamic gradients */}
             <div className={`absolute inset-0 ${heroImages[currentSlide].overlay} opacity-60`} />
             <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-background/30 to-transparent" />
             
-            {/* Floating particles effect */}
-            <div className="absolute inset-0 overflow-hidden">
-              {[...Array(12)].map((_, i) => (
+            {/* Optimized floating particles effect */}
+            <div className="absolute inset-0 overflow-hidden contain-strict">
+              {[...Array(6)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-2 h-2 bg-primary/20 rounded-full"
+                  className="absolute w-2 h-2 bg-primary/20 rounded-full gpu-accelerated"
                   initial={{ 
-                    x: Math.random() * window.innerWidth,
-                    y: window.innerHeight + 50,
+                    x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
+                    y: typeof window !== 'undefined' ? window.innerHeight + 50 : 850,
                     opacity: 0
                   }}
                   animate={{ 
@@ -107,9 +112,9 @@ export const HeroSection = () => {
                     opacity: [0, 1, 0]
                   }}
                   transition={{
-                    duration: Math.random() * 3 + 4,
+                    duration: Math.random() * 2 + 3,
                     repeat: Infinity,
-                    delay: Math.random() * 2,
+                    delay: Math.random() * 1.5,
                     ease: "linear"
                   }}
                 />
@@ -227,9 +232,9 @@ export const HeroSection = () => {
         </div>
       </motion.div>
 
-      {/* Decorative elements */}
-      <div className="absolute top-1/4 right-1/4 w-64 h-64 luxury-gradient rounded-full blur-3xl opacity-20 animate-pulse" />
-      <div className="absolute bottom-1/4 left-1/4 w-48 h-48 ocean-gradient rounded-full blur-2xl opacity-30 animate-pulse" style={{ animationDelay: '1s' }} />
+      {/* Optimized decorative elements */}
+      <div className="absolute top-1/4 right-1/4 w-64 h-64 luxury-gradient rounded-full blur-3xl opacity-20 animate-pulse-optimized contain-paint" />
+      <div className="absolute bottom-1/4 left-1/4 w-48 h-48 ocean-gradient rounded-full blur-2xl opacity-30 animate-pulse-optimized contain-paint" style={{ animationDelay: '1s' }} />
     </section>
   );
 };

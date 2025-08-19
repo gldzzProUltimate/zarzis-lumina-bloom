@@ -58,13 +58,15 @@ export const Navigation = () => {
           <Link to="/" className="flex items-center space-x-3 group">
             <motion.div
               whileHover={isDesktop ? { scale: 1.05, rotate: 5 } : {}}
-              className="w-10 h-10 luxury-gradient rounded-xl flex items-center justify-center shadow-medium lg:group-hover:shadow-glow transition-luxury"
+              transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+              className="w-10 h-10 luxury-gradient rounded-xl flex items-center justify-center shadow-medium lg:group-hover:shadow-glow transition-luxury transform-gpu"
             >
               <Waves className="h-6 w-6 text-white" />
             </motion.div>
             <motion.div
               whileHover={isDesktop ? { scale: 1.02 } : {}}
-              className="flex flex-col"
+              transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+              className="flex flex-col transform-gpu"
             >
               <span className="text-2xl lg:text-3xl font-bold text-shimmer">
                 Zarzis Éponge
@@ -90,7 +92,7 @@ export const Navigation = () => {
                 <span className="relative z-10">{t(`nav.${item.key}`)}</span>
                 
                 {/* Enhanced hover effect */}
-                <div className="absolute inset-0 rounded-xl bg-primary/10 scale-0 lg:group-hover:scale-100 transition-luxury opacity-0 lg:group-hover:opacity-100" />
+                <div className="absolute inset-0 rounded-xl bg-primary/10 scale-0 lg:group-hover:scale-100 transition-luxury opacity-0 lg:group-hover:opacity-100 transform-gpu" />
                 
                 {/* Active indicator */}
                 {location.pathname === item.path && (
@@ -151,7 +153,12 @@ export const Navigation = () => {
                       key={item.key}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
+                      transition={{ 
+                        delay: index * 0.05,
+                        duration: 0.3,
+                        ease: [0.4, 0, 0.2, 1]
+                      }}
+                      className="transform-gpu"
                     >
                       <Link
                         to={item.path}
@@ -171,8 +178,12 @@ export const Navigation = () => {
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8 }}
-                    className="pt-8 border-t border-primary/10"
+                    transition={{ 
+                      delay: 0.4,
+                      duration: 0.3,
+                      ease: [0.4, 0, 0.2, 1]
+                    }}
+                    className="pt-8 border-t border-primary/10 transform-gpu"
                   >
                     <Button 
                       className="w-full luxury-gradient text-white shadow-luxury lg:hover:shadow-glow transition-luxury font-semibold py-3 rounded-xl"
