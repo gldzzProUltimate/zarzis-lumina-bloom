@@ -200,19 +200,12 @@ const Gallery = () => {
             layout
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            <AnimatePresence>
-              {filteredImages.map((image, index) => (
-                <motion.div
-                  key={image.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.6 }}
-                  whileHover={isDesktop ? { y: -8, scale: 1.02 } : {}}
-                  className="glass-luxury rounded-3xl overflow-hidden shadow-soft lg:hover:shadow-luxury transition-luxury group cursor-pointer"
-                  onClick={() => openModal(galleryImages.findIndex(img => img.id === image.id))}
-                >
+            {filteredImages.map((image, index) => (
+              <div
+                key={image.id}
+                className="glass-luxury rounded-3xl overflow-hidden shadow-soft lg:hover:shadow-luxury transition-luxury group cursor-pointer"
+                onClick={() => openModal(galleryImages.findIndex(img => img.id === image.id))}
+              >
                   <div className="aspect-[4/3] overflow-hidden">
                     <img
                       src={image.src}
@@ -235,9 +228,8 @@ const Gallery = () => {
                       {image.location}
                     </div>
                   </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
+              </div>
+            ))}
           </motion.div>
         </div>
       </section>
