@@ -1,3 +1,4 @@
+
 {
   "nav": {
     "home": "Home",
@@ -36,6 +37,37 @@
     "title": "Crafted by Nature, Perfected by Time",
     "description": "From the pristine waters of Zarzis, Djerba, Kerkennah, Mahdia, Qlibya in Tunisia, and Pantelleria, Lampedusa in Italy, we bring you sponges that have been naturally formed over years in the Mediterranean Sea. Our family tradition spans generations, combining ancient harvesting techniques with modern quality standards.",
     "cta": "Learn Our Story"
+  },
+  "heritage": {
+    "title": "A Legacy Woven from the Sea",
+    "subtitle": "For over five millennia, the pristine waters of Zarzis have nurtured the Mediterranean's most prized natural sea sponges. This heritage of craftsmanship and sustainability is what inspires our mission today.",
+    "why_title": "Why We Say \"+40 Years of Heritage\"",
+    "why_description": "Although sponge fishing in Tunisia stretches back thousands of years, our family and community legacy began over four decades ago. Since the late 1970s, our divers have been hand-harvesting Mediterranean sponges with care, following traditions passed down through fathers, uncles, and grandfathers.",
+    "training": {
+      "title": "Four decades of professional diving",
+      "description": "Our divers trained at the national fishing training center established in Zarzis in 1968."
+    },
+    "hub": {
+      "title": "Sponge hub since antiquity",
+      "description": "Zarzis, Kerkennah, and Mahdia have supplied the world for centuries, with Tunisia being the world's largest producer (1976–1986)."
+    },
+    "cultural": {
+      "title": "Cultural recognition",
+      "description": "The Zarzis International Sponge Festival, celebrated since 1968, honors the oldest fishermen and promotes sustainable practices."
+    },
+    "claim_description": "This +40 years claim highlights not only the personal experience of our family divers but also a continuation of a centuries-old maritime tradition that connects Zarzis to the global sponge trade.",
+    "promise_title": "Our Promise",
+    "promise_1": "Careful hand collection – no chemicals, no machines.",
+    "promise_2": "Doctor-verified quality – every sponge inspected for safety and hygiene.",
+    "promise_3": "Sustainable practices – harvesting methods that preserve marine ecosystems.",
+    "promise_4": "Trusted worldwide – serving wholesale buyers across Europe, North America, and Asia.",
+    "numbers_title": "Our Heritage in Numbers",
+    "number_1": "500 Tunisian boats fishing by 1882, most from Zarzis and Kerkennah.",
+    "number_2": "115,000 kg of sponges harvested annually in Tunisia by the 1890s.",
+    "number_3": "35 tons per year harvested in the 1980s before disease reduced wild populations.",
+    "number_4": "40+ years of direct diving experience within our family.",
+    "future_title": "Looking Forward",
+    "future_description": "Today, we remain guardians of this ancient craft. Alongside sustainable harvesting, we support sponge farming and aquaculture to restore marine populations and ensure that future generations can continue this legacy."
   },
   "services": {
     "title": "Our Process",

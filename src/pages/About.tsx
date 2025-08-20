@@ -1,9 +1,11 @@
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Navigation } from '@/components/Navigation';
 import { StickyFloatingButtons } from '@/components/StickyFloatingButtons';
+import { Heritage } from '@/components/Heritage';
 import { useTranslation } from 'react-i18next';
-import { Award, Users, Shield, Leaf, Waves, Heart, Star, MapPin, Calendar, Clock, Sparkles } from 'lucide-react';
+import { Award, Users, Shield, Leaf, Heart, Star, MapPin, Sparkles } from 'lucide-react';
 
 export const About = () => {
   const { t } = useTranslation();
@@ -19,37 +21,6 @@ export const About = () => {
     
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
-
-  const heritage = [
-    {
-      year: '1980s',
-      title: 'Humble Beginnings',
-      description: 'Started as a small family operation in the pristine waters of Tunisia',
-      icon: Waves,
-      gradient: 'ocean-gradient'
-    },
-    {
-      year: '1990s',
-      title: 'Mediterranean Expansion',
-      description: 'Extended operations to Italian waters, mastering diverse sponge varieties',
-      icon: MapPin,
-      gradient: 'luxury-gradient'
-    },
-    {
-      year: '2000s',
-      title: 'Quality Certification',
-      description: 'Achieved international health standards and doctor verification',
-      icon: Shield,
-      gradient: 'pearl-gradient'
-    },
-    {
-      year: '2020s',
-      title: 'Global Wholesale',
-      description: 'Serving international wholesale buyers with premium natural sponges',
-      icon: Star,
-      gradient: 'luxury-gradient'
-    }
-  ];
 
   const locations = [
     { country: 'Tunisia', cities: ['Zarzis', 'Djerba', 'Kerkennah', 'Mahdia', 'Qlibya'], flag: '🇹🇳', description: 'Rich Mediterranean coastal waters with pristine sponge beds' },
@@ -121,61 +92,8 @@ export const About = () => {
         </div>
       </section>
 
-      {/* Heritage Timeline */}
-      <section className="py-32 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 luxury-gradient opacity-5" />
-        </div>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-20"
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              <span className="text-shimmer">Our Heritage</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-crimson">
-              A journey through decades of dedication to Mediterranean sponge craftsmanship
-            </p>
-          </motion.div>
-
-          <div className="max-w-4xl mx-auto">
-            {heritage.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                className={`flex items-center gap-8 mb-16 ${index % 2 === 1 ? 'flex-row-reverse' : ''}`}
-              >
-                <div className="flex-1">
-                  <div className={`glass-luxury rounded-3xl p-8 ${index % 2 === 1 ? 'text-right' : ''}`}>
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className={`w-16 h-16 ${item.gradient} rounded-2xl flex items-center justify-center shadow-medium`}>
-                        <item.icon className="h-8 w-8 text-white" />
-                      </div>
-                      <div>
-                        <div className="text-2xl font-bold text-primary">{item.year}</div>
-                        <div className="text-lg font-semibold text-foreground">{item.title}</div>
-                      </div>
-                    </div>
-                    <p className="text-muted-foreground leading-relaxed font-inter">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="w-px h-24 bg-gradient-to-b from-primary/50 to-transparent hidden lg:block" />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Heritage Section */}
+      <Heritage />
 
       {/* Locations */}
       <section className="py-32 relative overflow-hidden">
