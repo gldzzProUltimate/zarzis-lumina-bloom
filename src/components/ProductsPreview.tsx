@@ -1,9 +1,12 @@
+
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Star, Package } from 'lucide-react';
+import { ArrowRight, Package } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Carousel, Card } from '@/components/ui/apple-cards-carousel';
+import { SpongeProductContent } from '@/components/SpongeProductContent';
 
 export const ProductsPreview = () => {
   const { t } = useTranslation();
@@ -20,33 +23,51 @@ export const ProductsPreview = () => {
     return () => window.removeEventListener('resize', checkIsDesktop);
   }, []);
 
-  // Placeholder product categories
-  const productCategories = [
+  const products = [
     {
-      title: 'Premium Bath Sponges',
-      description: 'Luxurious natural sponges for daily use',
-      image: 'image-1.jpeg',
+      key: 'zimokhas',
+      imageUrl: 'https://stepma-eponges.com/wp-content/uploads/2017/01/zimokhas.png'
     },
     {
-      title: 'Spa Collection',
-      description: 'Professional-grade sponges for wellness centers',
-      image: 'image-2.jpeg',
+      key: 'scaphandre',
+      imageUrl: 'https://stepma-eponges.com/wp-content/uploads/2017/01/scaphandre.png'
     },
     {
-      title: 'Gentle Baby Sponges',
-      description: 'Extra soft sponges for sensitive skin',
-      image: 'image-3.jpeg',
+      key: 'kamakis',
+      imageUrl: 'https://stepma-eponges.com/wp-content/uploads/2017/01/kamakis.png'
     },
     {
-      title: 'Artisan Collection',
-      description: 'Handcrafted premium selections',
-      image: 'image-4.jpeg',
+      key: 'chalutier',
+      imageUrl: 'https://stepma-eponges.com/wp-content/uploads/2017/01/chalutier.png'
     },
+    {
+      key: 'elephant_ear',
+      imageUrl: 'https://stepma-eponges.com/wp-content/uploads/2017/01/zimokhas.png'
+    },
+    {
+      key: 'madappa',
+      imageUrl: 'https://stepma-eponges.com/wp-content/uploads/2017/01/scaphandre.png'
+    }
   ];
 
+  const cards = products.map((product) => ({
+    category: t(`products.products.${product.key}.details.origin`),
+    title: t(`products.products.${product.key}.name`),
+    src: product.imageUrl,
+    content: <SpongeProductContent productKey={product.key} />
+  }));
+
+  const carouselItems = cards.map((card, index) => (
+    <Card key={card.src} card={card} index={index} />
+  ));
+
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-primary-subtle/10">
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-gradient-to-b from-background to-primary-subtle/10 relative overflow-hidden">
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 pearl-gradient opacity-20" />
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -58,61 +79,22 @@ export const ProductsPreview = () => {
             <Package className="h-4 w-4 text-primary" />
             <span className="text-sm font-medium text-primary tracking-wide">{t('products.title').toUpperCase()}</span>
           </div>
-          <p className="text-xl mb-8 leading-relaxed max-w-3xl mx-auto bg-gradient-to-r from-primary via-secondary to-primary text-transparent bg-clip-text block">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 font-playfair">
+            <span className="text-shimmer">{t('products.title')}</span>
+          </h2>
+          <p className="text-xl mb-8 leading-relaxed max-w-3xl mx-auto font-crimson text-muted-foreground">
             {t('products.description')}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {productCategories.map((product, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={isDesktop ? { y: -8 } : {}}
-              className="group cursor-pointer"
-            >
-              <div className="glass rounded-2xl overflow-hidden transition-smooth lg:hover:shadow-ocean">
-                <div className="relative overflow-hidden">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className="w-full h-48 object-cover transition-smooth lg:group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 lg:group-hover:opacity-100 transition-smooth" />
-                </div>
-                
-                <div className="p-6">
-                  <div className="flex items-center mb-2">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-4 w-4 text-primary fill-current"
-                      />
-                    ))}
-                  </div>
-                  
-                  <h3 className="text-lg font-semibold mb-3 text-foreground lg:group-hover:text-primary transition-smooth">
-                    {product.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {product.description}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        <Carousel items={carouselItems} />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center"
+          className="text-center mt-16"
         >
           <Link to="/products">
             <Button 
