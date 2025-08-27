@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Navigation } from '@/components/Navigation';
 import { StickyFloatingButtons } from '@/components/StickyFloatingButtons';
+import { Timeline } from '@/components/Timeline';
 import { useTranslation } from 'react-i18next';
 import { 
   Waves, 
@@ -264,46 +265,7 @@ const Services = () => {
             </p>
           </motion.div>
 
-          <div className="max-w-5xl mx-auto">
-            {process.map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className={`flex items-center gap-8 mb-16 ${index % 2 === 1 ? 'flex-row-reverse' : ''}`}
-              >
-                <div className="flex-1">
-                  <div className={`glass-luxury rounded-3xl p-8 ${index % 2 === 1 ? 'text-right' : ''}`}>
-                    <div className={`flex items-center gap-4 mb-6 ${index % 2 === 1 ? 'justify-end' : ''}`}>
-                      <div className="w-16 h-16 luxury-gradient rounded-2xl flex items-center justify-center shadow-medium">
-                        <step.icon className="h-8 w-8 text-white" />
-                      </div>
-                      <div>
-                        <div className="text-3xl font-bold text-primary">{step.step}</div>
-                        <div className="text-xl font-semibold text-foreground">{step.title}</div>
-                      </div>
-                    </div>
-                    
-                    <p className="text-muted-foreground leading-relaxed font-inter mb-6">
-                      {step.description}
-                    </p>
-                    
-                    <div className={`grid grid-cols-2 gap-3 ${index % 2 === 1 ? 'text-right' : ''}`}>
-                      {step.details.map((detail, detailIndex) => (
-                        <div key={detailIndex} className="glass-luxury rounded-xl p-3 text-sm font-medium text-foreground">
-                          {detail}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="w-px h-24 bg-gradient-to-b from-primary/50 to-transparent hidden lg:block" />
-              </motion.div>
-            ))}
-          </div>
+          <Timeline steps={process} />
         </div>
       </section>
 
