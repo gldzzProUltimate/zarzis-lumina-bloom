@@ -55,17 +55,19 @@
       "title": "Cultural recognition",
       "description": "The Zarzis International Sponge Festival, celebrated since 1968, honors the oldest fishermen and promotes sustainable practices."
     },
+    "vocational": {
+      "title": "Vocational Excellence",
+      "description": "Since 1968, the Zarzis Vocational Training Center for Maritime Fishing has been Tunisia's leading institution, blending tradition with modern techniques and supporting professional diving programs that ensure our divers meet the highest standards."
+    },
     "claim_description": "This +40 years claim highlights not only the personal experience of our family divers but also a continuation of a centuries-old maritime tradition that connects Zarzis to the global sponge trade.",
     "promise_title": "Our Promise",
-    "promise_1": "Careful hand collection – no chemicals, no machines.",
-    "promise_2": "Doctor-verified quality – every sponge inspected for safety and hygiene.",
-    "promise_3": "Sustainable practices – harvesting methods that preserve marine ecosystems.",
-    "promise_4": "Trusted worldwide – serving wholesale buyers across Europe, North America, and Asia.",
+    "promise_1": "Careful hand collection without chemicals or machines",
+    "promise_2": "Doctor-verified quality throughout the process",
+    "promise_3": "Sustainable harvesting that preserves marine ecosystems",
+    "promise_4": "Certified and authorized for international trade, holding official export certification from the Tunisian Chamber of Commerce and Industry — ensuring authenticity, compliance, and worldwide trust",
     "numbers_title": "Our Heritage in Numbers",
-    "number_1": "500 Tunisian boats fishing by 1882, most from Zarzis and Kerkennah.",
-    "number_2": "115,000 kg of sponges harvested annually in Tunisia by the 1890s.",
-    "number_3": "35 tons per year harvested in the 1980s before disease reduced wild populations.",
-    "number_4": "40+ years of direct diving experience within our family.",
+    "number_1": "Annually, around 7–30 boats work in sponge hand harvesting in Tunisia",
+    "number_2": "Average annual production is 7 tons",
     "future_title": "Looking Forward",
     "future_description": "Today, we remain guardians of this ancient craft. Alongside sustainable harvesting, we support sponge farming and aquaculture to restore marine populations and ensure that future generations can continue this legacy."
   },

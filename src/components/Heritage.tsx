@@ -2,7 +2,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import { Waves, Users, Shield, Award, Calendar, TrendingUp, Anchor, Sparkles } from 'lucide-react';
+import { Waves, Users, Shield, Award, Calendar, TrendingUp, Anchor, Sparkles, GraduationCap } from 'lucide-react';
 
 const TextGenerateEffect = ({ 
   text, 
@@ -122,6 +122,12 @@ export const Heritage = () => {
       title: t('heritage.cultural.title'),
       description: t('heritage.cultural.description'),
       gradient: 'pearl-gradient'
+    },
+    {
+      icon: GraduationCap,
+      title: t('heritage.vocational.title'),
+      description: t('heritage.vocational.description'),
+      gradient: 'luxury-gradient'
     }
   ];
 
@@ -133,10 +139,8 @@ export const Heritage = () => {
   ];
 
   const numbers = [
-    { value: "500", text: t('heritage.number_1') },
-    { value: "115,000", text: t('heritage.number_2'), suffix: "kg" },
-    { value: "35", text: t('heritage.number_3'), suffix: " tons" },
-    { value: "40", text: t('heritage.number_4'), suffix: "+" }
+    { value: "7-30", text: t('heritage.number_1'), suffix: " boats" },
+    { value: "7", text: t('heritage.number_2'), suffix: " tons" }
   ];
 
   return (
@@ -205,7 +209,7 @@ export const Heritage = () => {
             />
 
             {/* Heritage Points with Staggered Animation */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {heritagePoints.map((point, index) => (
                 <motion.div
                   key={index}
@@ -262,12 +266,12 @@ export const Heritage = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
-                className="glass-luxury rounded-2xl p-6 flex items-center gap-4"
+                className="glass-luxury rounded-2xl p-6 flex items-start gap-4"
               >
                 <div className="w-12 h-12 luxury-gradient rounded-xl flex items-center justify-center shadow-medium flex-shrink-0">
                   <promise.icon className="h-6 w-6 text-white" />
                 </div>
-                <p className="text-foreground font-inter">{promise.text}</p>
+                <p className="text-foreground font-inter leading-relaxed">{promise.text}</p>
               </motion.div>
             ))}
           </div>
@@ -285,7 +289,7 @@ export const Heritage = () => {
             {t('heritage.numbers_title')}
           </h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {numbers.map((item, index) => (
               <motion.div
                 key={index}
@@ -295,12 +299,10 @@ export const Heritage = () => {
                 transition={{ duration: 0.6, delay: 0.1 * index }}
                 className="glass-luxury rounded-3xl p-8 text-center"
               >
-                <NumberCounter 
-                  number={item.value} 
-                  suffix={item.suffix}
-                  duration={2 + index * 0.2}
-                />
-                <p className="text-muted-foreground font-inter leading-relaxed mt-4">
+                <div className="text-4xl lg:text-5xl font-bold text-primary mb-4">
+                  {item.value}{item.suffix}
+                </div>
+                <p className="text-muted-foreground font-inter leading-relaxed">
                   {item.text}
                 </p>
               </motion.div>
