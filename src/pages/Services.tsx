@@ -1,8 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Navigation } from '@/components/Navigation';
 import { StickyFloatingButtons } from '@/components/StickyFloatingButtons';
-import { Timeline } from '@/components/Timeline';
+import { Timeline } from '@/components/ui/timeline';
 import { useTranslation } from 'react-i18next';
 import { 
   Waves, 
@@ -71,48 +72,228 @@ const Services = () => {
     }
   ];
 
-  const process = [
+  const processData = [
     {
-      step: '01',
-      title: 'Location Scouting',
-      description: 'Identifying pristine Mediterranean waters with healthy sponge populations',
-      icon: Eye,
-      details: ['Water quality assessment', 'Sponge bed mapping', 'Seasonal evaluation', 'Sustainability planning']
+      title: "Location Scouting",
+      content: (
+        <div>
+          <p className="mb-8 text-sm font-normal text-muted-foreground font-inter leading-relaxed">
+            Identifying pristine Mediterranean waters with healthy sponge populations through careful assessment and mapping.
+          </p>
+          <div className="mb-6">
+            <img
+              src="/image-1.jpeg"
+              alt="Mediterranean waters scouting"
+              width={500}
+              height={300}
+              className="w-full h-48 md:h-64 rounded-2xl object-cover shadow-soft"
+            />
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Water quality assessment
+            </div>
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Sponge bed mapping
+            </div>
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Seasonal evaluation
+            </div>
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Sustainability planning
+            </div>
+          </div>
+        </div>
+      ),
     },
     {
-      step: '02',
-      title: 'Hand Collection',
-      description: 'Expert divers carefully harvest sponges using traditional methods',
-      icon: Hand,
-      details: ['Selective harvesting', 'Depth-specific collection', 'Minimal ecosystem impact', 'Quality selection']
+      title: "Hand Collection",
+      content: (
+        <div>
+          <p className="mb-8 text-sm font-normal text-muted-foreground font-inter leading-relaxed">
+            Expert divers carefully harvest sponges using traditional methods passed down through generations.
+          </p>
+          <div className="mb-6">
+            <img
+              src="/image-2.jpeg"
+              alt="Traditional sponge harvesting"
+              width={500}
+              height={300}
+              className="w-full h-48 md:h-64 rounded-2xl object-cover shadow-soft"
+            />
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Selective harvesting
+            </div>
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Depth-specific collection
+            </div>
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Minimal ecosystem impact
+            </div>
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Quality selection
+            </div>
+          </div>
+        </div>
+      ),
     },
     {
-      step: '03',
-      title: 'Natural Processing',
-      description: 'Chemical-free cleaning and preparation maintaining sponge integrity',
-      icon: Heart,
-      details: ['Natural cleaning methods', 'Gentle processing', 'Size categorization', 'Quality grading']
+      title: "Natural Processing",
+      content: (
+        <div>
+          <p className="mb-8 text-sm font-normal text-muted-foreground font-inter leading-relaxed">
+            Chemical-free cleaning and preparation maintaining sponge integrity through gentle, natural methods.
+          </p>
+          <div className="mb-6">
+            <img
+              src="/image-3.jpeg"
+              alt="Natural sponge processing"
+              width={500}
+              height={300}
+              className="w-full h-48 md:h-64 rounded-2xl object-cover shadow-soft"
+            />
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Natural cleaning methods
+            </div>
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Gentle processing
+            </div>
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Size categorization
+            </div>
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Quality grading
+            </div>
+          </div>
+        </div>
+      ),
     },
     {
-      step: '04',
-      title: 'Quality Assurance',
-      description: 'Medical professional verification ensuring health and safety standards',
-      icon: ShieldCheck,
-      details: ['Doctor inspection', 'Health certification', 'Safety compliance', 'Quality validation']
+      title: "Quality Assurance",
+      content: (
+        <div>
+          <p className="mb-8 text-sm font-normal text-muted-foreground font-inter leading-relaxed">
+            Medical professional verification ensuring health and safety standards meet international requirements.
+          </p>
+          <div className="mb-6">
+            <img
+              src="/image-4.jpeg"
+              alt="Quality assurance and medical verification"
+              width={500}
+              height={300}
+              className="w-full h-48 md:h-64 rounded-2xl object-cover shadow-soft"
+            />
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Doctor inspection
+            </div>
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Health certification
+            </div>
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Safety compliance
+            </div>
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Quality validation
+            </div>
+          </div>
+        </div>
+      ),
     },
     {
-      step: '05',
-      title: 'Storage & Packaging',
-      description: 'Optimal storage conditions and secure packaging for worldwide shipping',
-      icon: Package,
-      details: ['Climate-controlled storage', 'Professional packaging', 'Documentation preparation', 'Shipping coordination']
+      title: "Storage & Packaging",
+      content: (
+        <div>
+          <p className="mb-8 text-sm font-normal text-muted-foreground font-inter leading-relaxed">
+            Optimal storage conditions and secure packaging for worldwide shipping, maintaining quality throughout transport.
+          </p>
+          <div className="mb-6">
+            <img
+              src="/image-5.jpeg"
+              alt="Professional storage and packaging"
+              width={500}
+              height={300}
+              className="w-full h-48 md:h-64 rounded-2xl object-cover shadow-soft"
+            />
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Climate-controlled storage
+            </div>
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Professional packaging
+            </div>
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Documentation preparation
+            </div>
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Shipping coordination
+            </div>
+          </div>
+        </div>
+      ),
     },
     {
-      step: '06',
-      title: 'Global Delivery',
-      description: 'Flexible shipping options to wholesale buyers worldwide',
-      icon: Truck,
-      details: ['Airplane express shipping', 'Reliable boat transport', 'Tracking & insurance', 'Client preference fulfillment']
+      title: "Global Delivery",
+      content: (
+        <div>
+          <p className="mb-8 text-sm font-normal text-muted-foreground font-inter leading-relaxed">
+            Flexible shipping options to wholesale buyers worldwide with reliable tracking and insurance coverage.
+          </p>
+          <div className="mb-6">
+            <img
+              src="/image-1.jpeg"
+              alt="Global shipping and delivery"
+              width={500}
+              height={300}
+              className="w-full h-48 md:h-64 rounded-2xl object-cover shadow-soft"
+            />
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Airplane express shipping
+            </div>
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Reliable boat transport
+            </div>
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Tracking & insurance
+            </div>
+            <div className="flex items-center gap-3 text-sm text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              Client preference fulfillment
+            </div>
+          </div>
+        </div>
+      ),
     }
   ];
 
@@ -265,7 +446,7 @@ const Services = () => {
             </p>
           </motion.div>
 
-          <Timeline steps={process} />
+          <Timeline data={processData} />
         </div>
       </section>
 
