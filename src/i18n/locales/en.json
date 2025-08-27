@@ -95,7 +95,64 @@
   "products": {
     "title": "Premium Sponge Collection",
     "description": "Explore our range of natural sea sponges, each carefully selected for its unique properties and exceptional quality.",
-    "cta": "Shop Now"
+    "cta": "Shop Now",
+    "page_title": "Our Products",
+    "subtitle": "100% Natural Premium Mediterranean Sea Sponges",
+    "highlights": {
+      "minimum_order": "Minimum order quantity: 100 kg",
+      "samples": "Samples available upon request",
+      "payment": "Rapid payment via certified and authorized banks with validated company accounts (not personal)",
+      "export_code": "International export certification: Official Chamber of Commerce code"
+    },
+    "note": "All sponges are premium quality and sizes respect the official commercial dimensions of natural sea sponges.",
+    "commercial_dimensions_title": "Commercial Dimensions",
+    "zimokhas": {
+      "name": "Zimokhas Sponges",
+      "origin": "Kerkennah, Zarzis, Djerba",
+      "quality": "Premium",
+      "resistance": "Strong",
+      "characteristic_1": "Very soft and resistant sponge, ideal for baby care and sensitive skin.",
+      "characteristic_2": "Perfect for make-up removal and cosmetic application."
+    },
+    "scaphandre": {
+      "name": "Scaphandre Sponges",
+      "origin": "Djerba, Zarzis (30–50m depth)",
+      "quality": "Premium",
+      "resistance": "Strong",
+      "characteristic_1": "Suitable for all types of uses."
+    },
+    "kamakis": {
+      "name": "Kamakis Sponges",
+      "origin": "Kerkennah (5–12m depth)",
+      "quality": "Premium",
+      "resistance": "Strong",
+      "characteristic_1": "Small and medium sizes ideal for family baths and make-up removal.",
+      "characteristic_2": "Large sizes cut for maintenance work such as wall cleaning."
+    },
+    "chalutier": {
+      "name": "Chalutier Sponges",
+      "origin": "Mahdia, Sfax, Gabes (15–30m depth)",
+      "quality": "Premium",
+      "resistance": "Strong",
+      "characteristic_1": "Large models particularly suitable for adult baths, soft, pleasant, and absorbent.",
+      "characteristic_2": "Medium models ideal for wall cleaning — absorbs dirt unlike synthetic sponges that spread it."
+    },
+    "elephant_ear": {
+      "name": "Elephant Ear Sponges",
+      "origin": "Qlibya, Pentalariya (Italy), 30–50m depth",
+      "quality": "Premium",
+      "resistance": "Strong",
+      "characteristic_1": "Rare and highly valued for their unique large leaf-like shape.",
+      "characteristic_2": "Ideal for decoration, crafts, and specialized uses."
+    },
+    "madappa": {
+      "name": "Madappa Sponges",
+      "origin": "Qlibya, Pentalariya (Italy), 30–50m depth",
+      "quality": "Premium",
+      "resistance": "Strong",
+      "characteristic_1": "Special Mediterranean sponge variety, highly resistant and versatile.",
+      "characteristic_2": "Used in multiple professional and household applications."
+    }
   },
   "gallery": {
     "title": "From Our Waters to Your World",
