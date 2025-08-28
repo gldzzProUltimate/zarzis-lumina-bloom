@@ -67,12 +67,7 @@ export const About = () => {
         </div>
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9 }}
-            className="text-center max-w-4xl mx-auto"
-          >
+          <div className="text-center max-w-4xl mx-auto">
             <div className="inline-flex items-center gap-2 glass-luxury rounded-full px-6 py-3 mb-8 shadow-medium">
               <Sparkles className="h-4 w-4 text-primary" />
               <span className="text-sm font-medium text-primary tracking-wide">OUR STORY</span>
@@ -88,7 +83,7 @@ export const About = () => {
               From the crystal-clear waters of Tunisia and Italy, we've been hand-harvesting the finest natural sea sponges, 
               building a legacy of quality, sustainability, and trust with wholesale buyers worldwide.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -103,29 +98,19 @@ export const About = () => {
         </div>
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-20"
-          >
+          <div className="text-center mb-20">
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
               <span className="text-shimmer">Mediterranean Locations</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-crimson">
               Seven pristine coastal locations where we harvest the finest natural sponges
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
             {locations.map((location, index) => (
-              <motion.div
+              <div
                 key={location.country}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
                 className="glass-luxury rounded-3xl p-8 lg:hover:shadow-luxury transition-luxury"
               >
                 <div className="flex items-center gap-4 mb-6">
@@ -149,7 +134,7 @@ export const About = () => {
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -162,38 +147,26 @@ export const About = () => {
         </div>
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-20"
-          >
+          <div className="text-center mb-20">
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
               <span className="text-shimmer">Our Core Values</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-crimson">
               The principles that guide our Mediterranean sponge harvesting tradition
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                whileHover={isDesktop ? { y: -8, scale: 1.02 } : {}}
                 className="glass-luxury rounded-3xl p-8 text-center lg:hover:shadow-luxury transition-luxury group"
               >
-                <motion.div
-                  whileHover={isDesktop ? { scale: 1.1, rotate: 5 } : {}}
+                <div
                   className={`w-16 h-16 ${value.gradient} rounded-2xl flex items-center justify-center shadow-medium lg:group-hover:shadow-glow transition-luxury mx-auto mb-6`}
                 >
                   <value.icon className="h-8 w-8 text-white" />
-                </motion.div>
+                </div>
                 
                 <h3 className="text-xl font-semibold text-foreground lg:group-hover:text-primary transition-colors mb-4">
                   {value.title}
@@ -202,7 +175,7 @@ export const About = () => {
                 <p className="text-muted-foreground leading-relaxed font-inter">
                   {value.description}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
