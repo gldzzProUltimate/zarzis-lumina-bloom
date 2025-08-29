@@ -75,9 +75,7 @@ const ContactForm = () => {
 
     try {
       // Determine API URL based on environment
-      const apiUrl = import.meta.env.PROD
-        ? 'https://zarzis-eponge-api.onrender.com/api/send-email' // Production URL for zarzis-eponge
-        : 'http://localhost:3001/api/send-email'; // Development URL
+      const apiUrl ='https://zarzis-eponge.onrender.com/api/send-email' // Production URL for zarzis-eponge
       console.log({apiUrl})
       const body = JSON.stringify({
         name: formData.name,
