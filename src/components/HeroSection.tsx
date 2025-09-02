@@ -144,7 +144,7 @@ export const HeroSection = () => {
             </motion.div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold mb-8 leading-tight text-balance">
-              <span className="text-shimmer">
+              <span className="text-muted-foreground">
                 {t('hero.title')}
               </span>
             </h1>
