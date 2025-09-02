@@ -64,7 +64,7 @@ export const ServicesPreview = () => {
                     <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-gradient-to-r from-primary/30 to-secondary/30 z-0" />
                   )}
 
-                  <div className="glass rounded-2xl p-8 text-center relative z-10 transition-smooth lg:hover:shadow-ocean">
+                  <div className="glass h-full rounded-2xl p-8 text-center relative z-10 transition-smooth lg:hover:shadow-ocean">
                     <motion.div
                       whileHover={isDesktop ? { scale: 1.1, rotate: 10 } : {}}
                       className={`inline-flex items-center justify-center w-16 h-16 rounded-full mb-6 ${

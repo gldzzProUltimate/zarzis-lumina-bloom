@@ -1,18 +1,12 @@
-
 "use client";
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  createContext,
-  useContext,
-} from "react";
-import {
-  IconArrowNarrowLeft,
-  IconArrowNarrowRight,
-} from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
+import { IconArrowNarrowLeft, IconArrowNarrowRight } from "@tabler/icons-react";
 import { motion } from "framer-motion";
+import React, {
+  createContext,
+  useEffect,
+  useState
+} from "react";
 import { useNavigate } from "react-router-dom";
 
 interface CarouselProps {
@@ -97,7 +91,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
           <div
             className={cn(
               "flex flex-row justify-start gap-4 pl-4",
-              "mx-auto max-w-7xl",
+              "mx-auto max-w-7xl"
             )}
           >
             {items.map((item, index) => (
@@ -154,10 +148,8 @@ export const Card = ({
   layout?: boolean;
 }) => {
   const navigate = useNavigate();
-  const { onCardClose } = useContext(CarouselContext);
-
   const handleOpen = () => {
-    navigate('/products');
+    navigate("/products");
   };
 
   return (
@@ -165,13 +157,13 @@ export const Card = ({
       onClick={handleOpen}
       className="relative z-10 flex h-80 w-56 flex-col items-start justify-start overflow-hidden rounded-3xl glass-luxury transition-smooth lg:hover:shadow-luxury md:h-[40rem] md:w-96 group"
     >
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-primary/60 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/60 via-black/25 to-transparent" />
       <div className="relative z-40 p-8">
-        <p className="text-left font-inter text-sm font-medium text-white md:text-base">
-          {card.category}
-        </p>
-        <p className="mt-2 max-w-xs text-left font-playfair text-xl font-semibold [text-wrap:balance] text-white md:text-3xl">
+        <p className="mt-2 max-w-xs text-left font-playfair text-xl font-semibold [text-wrap:balance] text-white text-shadow-lg md:text-3xl">
           {card.title}
+        </p>
+        <p className="text-left font-inter text-sm font-medium text-white text-shadow-lg md:text-base">
+          {card.category}
         </p>
       </div>
       <img
