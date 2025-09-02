@@ -137,7 +137,7 @@ export const HeroSection = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="inline-flex items-center gap-2 glass-luxury rounded-full px-6 py-3 mb-8 shadow-luxury"
+              className="inline-flex items-center gap-2 glass-luxury rounded-full px-6 py-3 my-8 shadow-luxury"
             >
               <Sparkles className="h-4 w-4 text-primary" />
               <span className="text-sm font-medium text-primary">Premium Mediterranean Quality</span>
@@ -167,23 +167,15 @@ export const HeroSection = () => {
                 >
                   {t('hero.cta')}
                   <ArrowRight className="ml-3 h-6 w-6 transition-transform lg:group-hover:translate-x-2" />
-                </Button>
+                </Button> 
               </Link>
-              
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="glass-luxury border-2 border-primary/20 text-primary lg:hover:bg-primary/10 transition-luxury px-10 py-7 text-lg font-semibold rounded-2xl focus-luxury"
-              >
-                View Collection
-              </Button>
             </div>
           </motion.div>
         </div>
       </div>
 
       {/* Enhanced Carousel Controls */}
-      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20">
+      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20 hidden lg:block">
         <div className="flex items-center space-x-6">
           <Button
             variant="ghost"
